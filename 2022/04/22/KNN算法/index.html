@@ -24,22 +24,21 @@
 <meta property="og:description" content="kNN算法[HOMEWORK]算法特点 基本分类与回归方法 监督学习：样本集中每个数据都存在标签 样本集中每一个数据与所属分类的对应关系   新数据的每个特征与样本集中数据对应的特征进行比较，算法提取样本最相似数据(最近邻)的分类标签 k-近邻算法中k：只选择样本数据集中前k个最相似的数据 选择k个最相似数据中出现次数最多的分类  核心思想一个样本在特征空间中的k个最相邻的样本中的大多数属于某一个">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://morvanzhou.github.io/static/results/sklearn/2_3_1.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308150715986.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308150728273.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308151045761.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308152953872.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308154044641.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308154101537.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308154143187.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308154155165.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308154208057.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308154218279.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308153131717.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308164311481.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308164609119.png">
-<meta property="og:image" content="http://example.com/2022/04/22/KNN%E7%AE%97%E6%B3%95/KNN%E7%AE%97%E6%B3%95.assets/image-20220308164628930.png">
+<meta property="og:image" content="http://example.com/img/image-20220308150715986.png">
+<meta property="og:image" content="http://example.com/img/image-20220308150728273.png">
+<meta property="og:image" content="http://example.com/img/image-20220308151045761.png">
+<meta property="og:image" content="http://example.com/img/image-20220308152953872.png">
+<meta property="og:image" content="http://example.com/img/image-20220308154044641.png">
+<meta property="og:image" content="http://example.com/img/image-20220308154143187.png">
+<meta property="og:image" content="http://example.com/img/image-20220308154155165.png">
+<meta property="og:image" content="http://example.com/img/image-20220308154208057.png">
+<meta property="og:image" content="http://example.com/img/image-20220308154218279.png">
+<meta property="og:image" content="http://example.com/img/image-20220308153131717.png">
+<meta property="og:image" content="http://example.com/img/image-20220308164311481.png">
+<meta property="og:image" content="http://example.com/img/image-20220308164609119.png">
+<meta property="og:image" content="http://example.com/img/image-20220308164628930.png">
 <meta property="article:published_time" content="2022-04-22T09:03:00.000Z">
-<meta property="article:modified_time" content="2022-04-23T04:52:29.293Z">
+<meta property="article:modified_time" content="2022-04-23T05:05:13.075Z">
 <meta property="article:author" content="Yang Qiya">
 <meta property="article:tag" content="机器学习">
 <meta property="article:tag" content="课程作业">
@@ -353,10 +352,8 @@
 <ul>
 <li>测试集所占的比例，0-1之间或代表测试集的整数</li>
 </ul>
-
-
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308150715986.png" srcset="/img/loading.gif" lazyload alt="image-20220308150715986"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308150728273.png" srcset="/img/loading.gif" lazyload alt="image-20220308150728273"></p>
+<p><img src="/img/image-20220308150715986.png" srcset="/img/loading.gif" lazyload alt="image-20220308150715986"></p>
+<p><img src="/img/image-20220308150728273.png" srcset="/img/loading.gif" lazyload alt="image-20220308150728273"></p>
 <ul>
 <li>原本样本数：150，0.5取样后75</li>
 <li>idx=75</li>
@@ -365,7 +362,7 @@
 <li>75*0.2=15个测试样本</li>
 </ul>
 <p>采样率换成0.1：</p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308151045761.png" srcset="/img/loading.gif" lazyload alt="image-20220308151045761"></p>
+<p><img src="/img/image-20220308151045761.png" srcset="/img/loading.gif" lazyload alt="image-20220308151045761"></p>
 <ul>
 <li>150*0.1=15</li>
 <li>15个样本中有3类</li>
@@ -392,17 +389,16 @@
 
 
 <h1 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h1><h2 id="dataset-datasets-load-iris"><a href="#dataset-datasets-load-iris" class="headerlink" title="dataset = datasets.load_iris()"></a>dataset = datasets.load_iris()</h2><p>sample_rate = 0.5 # 采样率（可以选择小于1）</p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308152953872.png" srcset="/img/loading.gif" lazyload alt="image-20220308152953872"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308154044641.png" srcset="/img/loading.gif" lazyload alt="image-20220308154044641"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308154101537.png" srcset="/img/loading.gif" lazyload alt="image-20220308154101537"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308154143187.png" srcset="/img/loading.gif" lazyload alt="image-20220308154143187"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308154155165.png" srcset="/img/loading.gif" lazyload alt="image-20220308154155165"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308154208057.png" srcset="/img/loading.gif" lazyload alt="image-20220308154208057"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308154218279.png" srcset="/img/loading.gif" lazyload alt="image-20220308154218279"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308153131717.png" srcset="/img/loading.gif" lazyload alt="image-20220308153131717"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308164311481.png" srcset="/img/loading.gif" lazyload alt="image-20220308164311481"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308164609119.png" srcset="/img/loading.gif" lazyload alt="image-20220308164609119"></p>
-<p><img src="KNN%E7%AE%97%E6%B3%95.assets/image-20220308164628930.png" srcset="/img/loading.gif" lazyload alt="image-20220308164628930"></p>
+<p><img src="/img/image-20220308152953872.png" srcset="/img/loading.gif" lazyload alt="image-20220308152953872"></p>
+<p><img src="/img/image-20220308154044641.png" srcset="/img/loading.gif" lazyload alt="image-20220308154044641"></p>
+<p><img src="/img/image-20220308154143187.png" srcset="/img/loading.gif" lazyload alt="image-20220308154143187"></p>
+<p><img src="/img/image-20220308154155165.png" srcset="/img/loading.gif" lazyload alt="image-20220308154155165"></p>
+<p><img src="/img/image-20220308154208057.png" srcset="/img/loading.gif" lazyload alt="image-20220308154208057"></p>
+<p><img src="/img/image-20220308154218279.png" srcset="/img/loading.gif" lazyload alt="image-20220308154218279"></p>
+<p><img src="/img/image-20220308153131717.png" srcset="/img/loading.gif" lazyload alt="image-20220308153131717"></p>
+<p><img src="/img/image-20220308164311481.png" srcset="/img/loading.gif" lazyload alt="image-20220308164311481"></p>
+<p><img src="/img/image-20220308164609119.png" srcset="/img/loading.gif" lazyload alt="image-20220308164609119"></p>
+<p><img src="/img/image-20220308164628930.png" srcset="/img/loading.gif" lazyload alt="image-20220308164628930"></p>
 
             </div>
             <hr>
@@ -432,15 +428,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/23/hello-world/">
+                      <a href="/2022/04/22/MarcovChain%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E9%93%BE/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Hello World</span>
+                        <span class="hidden-mobile">MarcovChain马尔科夫链</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/04/22/CV%E7%82%BC%E4%B8%B9%E6%8A%80%E5%B7%A7%E6%80%BB%E7%BB%932/">
+                        <span class="hidden-mobile">CV炼丹技巧总结2</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
