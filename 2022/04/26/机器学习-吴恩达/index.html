@@ -1,0 +1,631 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <link rel="icon" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yang Qiya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="吴恩达-机器学习  人工智能的分支 数据挖掘 获取点击量等 更好服务用户     2-什么是机器学习  不同类型的学习算法 监督学习 教计算机去学  无监督学习 让计算机自己去学  推荐系统增强学习3-监督学习  给一个和数据集，有正确答案  算法目的：给出更多的正确答案   回归问题预测连续值的属性 分类问题  结果是几个离散值 2个、3、4等  支持向量机 允许计算机处理无穷多的特征  小测">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习-吴恩达">
+<meta property="og:url" content="http://example.com/2022/04/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%90%B4%E6%81%A9%E8%BE%BE/index.html">
+<meta property="og:site_name" content="Qiya">
+<meta property="og:description" content="吴恩达-机器学习  人工智能的分支 数据挖掘 获取点击量等 更好服务用户     2-什么是机器学习  不同类型的学习算法 监督学习 教计算机去学  无监督学习 让计算机自己去学  推荐系统增强学习3-监督学习  给一个和数据集，有正确答案  算法目的：给出更多的正确答案   回归问题预测连续值的属性 分类问题  结果是几个离散值 2个、3、4等  支持向量机 允许计算机处理无穷多的特征  小测">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image-20220219151608385.png">
+<meta property="og:image" content="http://example.com/img/image-20220219152226142.png">
+<meta property="og:image" content="http://example.com/img/image-20220219152509512.png">
+<meta property="og:image" content="http://example.com/img/image-20220219152540560.png">
+<meta property="og:image" content="http://example.com/img/image-20220219152652870.png">
+<meta property="og:image" content="http://example.com/img/image-20220219153700204.png">
+<meta property="og:image" content="http://example.com/img/image-20220219154355017.png">
+<meta property="og:image" content="http://example.com/img/image-20220219155247863.png">
+<meta property="og:image" content="http://example.com/img/image-20220219160008105.png">
+<meta property="og:image" content="http://example.com/img/image-20220307200442434.png">
+<meta property="og:image" content="http://example.com/img/image-20220307205147461.png">
+<meta property="og:image" content="http://example.com/img/image-20220307205842256.png">
+<meta property="og:image" content="http://example.com/img/image-20220307210321018.png">
+<meta property="og:image" content="http://example.com/img/image-20220321115434285.png">
+<meta property="og:image" content="http://example.com/img/image-20220307211619129.png">
+<meta property="og:image" content="http://example.com/img/image-20220307211907503.png">
+<meta property="og:image" content="http://example.com/img/image-20220307213230285.png">
+<meta property="og:image" content="http://example.com/img/image-20220321120454928.png">
+<meta property="og:image" content="http://example.com/img/image-20220307213335636.png">
+<meta property="og:image" content="http://example.com/img/image-20220307213831305.png">
+<meta property="article:published_time" content="2022-04-26T00:24:34.000Z">
+<meta property="article:modified_time" content="2022-04-26T00:28:30.586Z">
+<meta property="article:author" content="Yang Qiya">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/image-20220219151608385.png">
+  
+  
+  <title>机器学习-吴恩达 - Qiya</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qiya&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="机器学习-吴恩达">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-26 08:24" pubdate>
+        April 26, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      850 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">机器学习-吴恩达</h1>
+            
+            <div class="markdown-body">
+              <h1 id="吴恩达-机器学习"><a href="#吴恩达-机器学习" class="headerlink" title="吴恩达-机器学习"></a>吴恩达-机器学习</h1><p><img src="/img/image-20220219151608385.png" srcset="/img/loading.gif" lazyload alt="image-20220219151608385"></p>
+<ul>
+<li>人工智能的分支</li>
+<li>数据挖掘<ul>
+<li>获取点击量等</li>
+<li>更好服务用户</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/image-20220219152226142.png" srcset="/img/loading.gif" lazyload alt="image-20220219152226142"></p>
+<h1 id="2-什么是机器学习"><a href="#2-什么是机器学习" class="headerlink" title="2-什么是机器学习"></a>2-什么是机器学习</h1><p><img src="/img/image-20220219152509512.png" srcset="/img/loading.gif" lazyload alt="image-20220219152509512"></p>
+<p><img src="/img/image-20220219152540560.png" srcset="/img/loading.gif" lazyload alt="image-20220219152540560"></p>
+<h2 id="不同类型的学习算法"><a href="#不同类型的学习算法" class="headerlink" title="不同类型的学习算法"></a>不同类型的学习算法</h2><p><img src="/img/image-20220219152652870.png" srcset="/img/loading.gif" lazyload alt="image-20220219152652870"></p>
+<h3 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h3><ul>
+<li>教计算机去学</li>
+</ul>
+<h3 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h3><ul>
+<li>让计算机自己去学</li>
+</ul>
+<h3 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h3><h3 id="增强学习"><a href="#增强学习" class="headerlink" title="增强学习"></a>增强学习</h3><h1 id="3-监督学习"><a href="#3-监督学习" class="headerlink" title="3-监督学习"></a>3-监督学习</h1><ul>
+<li> 给一个和数据集，有正确答案</li>
+<li> 算法目的：给出更多的正确答案 </li>
+</ul>
+<h2 id="回归问题"><a href="#回归问题" class="headerlink" title="回归问题"></a>回归问题</h2><p>预测连续值的属性</p>
+<h2 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h2><p><img src="/img/image-20220219153700204.png" srcset="/img/loading.gif" lazyload alt="image-20220219153700204"></p>
+<ul>
+<li>结果是几个离散值</li>
+<li>2个、3、4等</li>
+</ul>
+<h2 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h2><ul>
+<li>允许计算机处理<strong>无穷多的特征</strong></li>
+</ul>
+<h2 id="小测"><a href="#小测" class="headerlink" title="小测"></a>小测</h2><ul>
+<li>把卖的货物数量看成一个连续值</li>
+</ul>
+<p><img src="/img/image-20220219154355017.png" srcset="/img/loading.gif" lazyload alt="image-20220219154355017"></p>
+<p>==》回归问题</p>
+<h1 id="4-无监督学习"><a href="#4-无监督学习" class="headerlink" title="4-无监督学习"></a>4-无监督学习</h1><ul>
+<li>没有任何标签</li>
+<li>能在其中找到某种结构吗？</li>
+<li>自动按得到的类型把这些个体分成簇吗？</li>
+</ul>
+<h2 id="聚类算法"><a href="#聚类算法" class="headerlink" title="聚类算法"></a>聚类算法</h2><ul>
+<li><strong>把两簇分开</strong></li>
+<li>谷歌新闻<ul>
+<li>搜索上千条新闻，自动分类</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/image-20220219155247863.png" srcset="/img/loading.gif" lazyload alt="image-20220219155247863"></p>
+<p><img src="/img/image-20220219160008105.png" srcset="/img/loading.gif" lazyload alt="image-20220219160008105"></p>
+<h1 id="5-模型描述"><a href="#5-模型描述" class="headerlink" title="5-模型描述"></a>5-模型描述</h1><h1 id="5-6-矢量"><a href="#5-6-矢量" class="headerlink" title="5-6 矢量"></a>5-6 矢量</h1><p><img src="/img/image-20220307200442434.png" srcset="/img/loading.gif" lazyload alt="image-20220307200442434"></p>
+<ul>
+<li>把乘积运算变成向量运算：高效很多</li>
+</ul>
+<h1 id="6-7-多元分类"><a href="#6-7-多元分类" class="headerlink" title="6-7 多元分类"></a>6-7 多元分类</h1><h2 id="一对多"><a href="#一对多" class="headerlink" title="一对多"></a>一对多</h2><p><img src="/img/image-20220307205147461.png" srcset="/img/loading.gif" lazyload alt="image-20220307205147461"></p>
+<ul>
+<li>判断一个是什么类别时，先把两外两个都看成“负类”</li>
+</ul>
+<h1 id="7-1-过拟合"><a href="#7-1-过拟合" class="headerlink" title="7-1 过拟合"></a>7-1 过拟合</h1><h2 id="欠拟合-高偏差"><a href="#欠拟合-高偏差" class="headerlink" title="欠拟合/高偏差"></a>欠拟合/高偏差</h2><ul>
+<li>不够好</li>
+<li>没有很好拟合</li>
+<li>高偏差：只觉得price和size线性相关，没有考虑其他特征变量</li>
+</ul>
+<h2 id="过拟合-高方差"><a href="#过拟合-高方差" class="headerlink" title="过拟合/高方差"></a>过拟合/高方差</h2><ul>
+<li>弯弯曲曲</li>
+<li>能拟合几乎所有数据点—&gt;函数可能有很多变量，没有足够的数据约束</li>
+</ul>
+<hr>
+<ul>
+<li>在变量过多的时候出现<ul>
+<li>能很好拟合训练集</li>
+<li>loss函数—&gt;0</li>
+<li>千方百计拟合训练集，无法泛化到新的样本中</li>
+<li>考虑了很多特征变量</li>
+</ul>
+</li>
+<li>变量很多，数据集很少<ul>
+<li>容易过拟合</li>
+</ul>
+</li>
+</ul>
+<h2 id="正好"><a href="#正好" class="headerlink" title="正好"></a>正好</h2><ul>
+<li>介于两者之间</li>
+</ul>
+<p><img src="/img/image-20220307205842256.png" srcset="/img/loading.gif" lazyload alt="image-20220307205842256"></p>
+<p><img src="/img/image-20220307210321018.png" srcset="/img/loading.gif" lazyload alt="image-20220307210321018"></p>
+<h2 id="如何解决过拟合？"><a href="#如何解决过拟合？" class="headerlink" title="如何解决过拟合？"></a>如何解决过拟合？</h2><p><img src="/img/image-20220321115434285.png" srcset="/img/loading.gif" lazyload alt="image-20220321115434285"></p>
+<ul>
+<li><p>==1 舍弃一部分特征变量==</p>
+<ul>
+<li>人工选择哪些不太重要</li>
+<li>模型选择算法</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>可能会丢失一些信息 </li>
+</ul>
+</li>
+<li><p>==2 正则化==</p>
+<ul>
+<li>保留所有特征变量，<strong>减少量级</strong>或<strong>参数theta的大小</strong></li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/image-20220307211619129.png" srcset="/img/loading.gif" lazyload alt="image-20220307211619129"></p>
+<h2 id="7-2-代价函数"><a href="#7-2-代价函数" class="headerlink" title="7-2 代价函数"></a>7-2 代价函数</h2><p><img src="/img/image-20220307211907503.png" srcset="/img/loading.gif" lazyload alt="image-20220307211907503"></p>
+<ul>
+<li>加入2个惩罚项</li>
+<li>使这两个项都尽可能小，–》0，使得变成二次项</li>
+</ul>
+<p>👇</p>
+<ul>
+<li>这些个参数越↓ 函数越平滑、简单，不容易过拟合</li>
+</ul>
+<p><img src="/img/image-20220307213230285.png" srcset="/img/loading.gif" lazyload alt="image-20220307213230285"></p>
+<h3 id="lamda参数"><a href="#lamda参数" class="headerlink" title="lamda参数"></a>lamda参数</h3><ul>
+<li>==由于直接从特征中找出哪些维度可以丢弃不容易，于是对损失函数下手，在loss中加入一个<strong>缩小所有参数</strong>的项==<img src="/img/image-20220321120454928.png" srcset="/img/loading.gif" lazyload alt="image-20220321120454928"></li>
+</ul>
+<blockquote>
+<p>惩罚项：多加一个项，使得loss不那么容易—&gt;0</p>
+</blockquote>
+<ul>
+<li>lamda：使得<strong>所有参数theta</strong>更小，同时前面的loss更小（更拟合）</li>
+</ul>
+<p><img src="/img/image-20220307213335636.png" srcset="/img/loading.gif" lazyload alt="image-20220307213335636"></p>
+<p>简单的说，就是减小不太重要的因素参与计算的权重</p>
+<hr>
+<ul>
+<li><p>如果<strong>lamda设得特别大</strong>：</p>
+<ul>
+<li><p>每个Θ相当于0，最后只剩Θ0，一条直线拟合</p>
+</li>
+<li><p>对参数的惩罚程度太大，欠拟合</p>
+</li>
+<li><p><img src="/img/image-20220307213831305.png" srcset="/img/loading.gif" lazyload alt="image-20220307213831305"></p>
+</li>
+<li><p>要谨慎选择朗达</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-3线性回归的正则化"><a href="#7-3线性回归的正则化" class="headerlink" title="7-3线性回归的正则化"></a>7-3线性回归的正则化</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/26/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BASVM/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">支持向量机SVM</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/23/GIB-PaperRecord/">
+                        <span class="hidden-mobile">GIB-PaperRecord</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2022/04/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%90%B4%E6%81%A9%E8%BE%BE/';
+          this.page.identifier = '/2022/04/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%90%B4%E6%81%A9%E8%BE%BE/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

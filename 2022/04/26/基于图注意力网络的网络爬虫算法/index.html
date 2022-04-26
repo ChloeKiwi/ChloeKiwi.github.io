@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <link rel="icon" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yang Qiya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基于图注意力网络的网络爬虫算法 数据预处理 得到两个矩阵 向量矩阵+邻接矩阵    Word2Vec建图Word2Vec算法 Word2vec 目前在 NLP 领域, 是一种将文本处理成向量的方法 Word2vec 无需监督就可以从大量的文本语料库中学习语义知识，并尝试通过文本学习将单词的语义信息表达为单词的&#x3D;&#x3D;向量&#x3D;&#x3D;。 Skip-Gram模型的使用目的在于获得学习过程中的&#x3D;&#x3D;权重矩阵&#x3D;&#x3D;，该矩">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于图注意力网络的网络爬虫算法">
+<meta property="og:url" content="http://example.com/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Qiya">
+<meta property="og:description" content="基于图注意力网络的网络爬虫算法 数据预处理 得到两个矩阵 向量矩阵+邻接矩阵    Word2Vec建图Word2Vec算法 Word2vec 目前在 NLP 领域, 是一种将文本处理成向量的方法 Word2vec 无需监督就可以从大量的文本语料库中学习语义知识，并尝试通过文本学习将单词的语义信息表达为单词的&#x3D;&#x3D;向量&#x3D;&#x3D;。 Skip-Gram模型的使用目的在于获得学习过程中的&#x3D;&#x3D;权重矩阵&#x3D;&#x3D;，该矩">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image-20210924191501938.png">
+<meta property="og:image" content="http://example.com/img/image-20210924200936054.png">
+<meta property="og:image" content="http://example.com/img/image-20210925104618066.png">
+<meta property="og:image" content="http://example.com/img/image-20210925104632235.png">
+<meta property="og:image" content="http://example.com/img/image-20210925104959276.png">
+<meta property="og:image" content="http://example.com/img/image-20210925105427325.png">
+<meta property="og:image" content="http://example.com/img/image-20210925105920745.png">
+<meta property="og:image" content="http://example.com/img/image-20210925110049526.png">
+<meta property="og:image" content="http://example.com/img/image-20210925111040156.png">
+<meta property="og:image" content="http://example.com/img/image-20210928222712896.png">
+<meta property="og:image" content="http://example.com/img/image-20211005114803708.png">
+<meta property="og:image" content="http://example.com/img/image-20211005114932552.png">
+<meta property="article:published_time" content="2022-04-26T00:35:41.000Z">
+<meta property="article:modified_time" content="2022-04-26T00:36:13.495Z">
+<meta property="article:author" content="Yang Qiya">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="paper阅读">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="图神经网络">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/image-20210924191501938.png">
+  
+  
+  <title>基于图注意力网络的网络爬虫算法 - Qiya</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qiya&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="基于图注意力网络的网络爬虫算法">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-26 08:35" pubdate>
+        April 26, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基于图注意力网络的网络爬虫算法</h1>
+            
+            <div class="markdown-body">
+              <h1 id="基于图注意力网络的网络爬虫算法"><a href="#基于图注意力网络的网络爬虫算法" class="headerlink" title="基于图注意力网络的网络爬虫算法"></a>基于图注意力网络的网络爬虫算法</h1><p><img src="/img/image-20210924191501938.png" srcset="/img/loading.gif" lazyload alt="image-20210924191501938"></p>
+<h1 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h1><ul>
+<li>得到两个矩阵<ul>
+<li>向量矩阵+邻接矩阵</li>
+</ul>
+</li>
+</ul>
+<h1 id="Word2Vec建图"><a href="#Word2Vec建图" class="headerlink" title="Word2Vec建图"></a>Word2Vec建图</h1><h2 id="Word2Vec算法"><a href="#Word2Vec算法" class="headerlink" title="Word2Vec算法"></a>Word2Vec算法</h2><ul>
+<li>Word2vec 目前在 NLP 领域, 是一种将文本处理成向量的方法</li>
+<li>Word2vec 无需监督就可以从<strong>大量的文本语料库</strong>中学习<strong>语义知识</strong>，并尝试通过<strong>文本学习</strong>将单词的语义信息表达为单词的==向量==。</li>
+<li>Skip-Gram模型的使用目的在于获得学习过程中的==权重矩阵==，该矩阵会随着训练的不断进行不断更新</li>
+<li>我们需要的==词向量==—》该隐藏层的==权重矩阵==</li>
+</ul>
+<blockquote>
+<p>此处，每一条日志：独立词语， 全部日志：一篇文章</p>
+<p>最终得到：完整日志中每条日志的词向量表示</p>
+</blockquote>
+<h2 id="日志建图算法"><a href="#日志建图算法" class="headerlink" title="日志建图算法"></a>日志建图算法</h2><blockquote>
+<p>上文：已经得到每条日志的词向量，可以表示每个节点，现在需要：边？即：节点之间的关系</p>
+</blockquote>
+<ul>
+<li>TF-IDF处理<ul>
+<li>一种常用的加权技术</li>
+<li>评估一个词语对于某个整体的==重要程度==<ul>
+<li>字词的重要性会随着它在文件中的<strong>出现次</strong><br><strong>数而增加</strong>，但也会随着它在<strong>语料库中出现的频率增加而降低</strong></li>
+</ul>
+</li>
+<li>整个日志文件视为所有文本文件的综合，单个日志视为一个文件，将每个日志的矢量特征组合为文本中的关键字</li>
+<li>整个图的==边缘权重==：节点之间的<strong>余弦相似度</strong></li>
+</ul>
+</li>
+<li>对日志文件进行建图<ul>
+<li>采取图神经网络模型</li>
+<li>输入：每个节点的特征描述+图结构的邻接矩阵<ul>
+<li>节点的特征描述：SG模型？</li>
+<li><img src="/img/image-20210924200936054.png" srcset="/img/loading.gif" lazyload alt="image-20210924200936054"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="图卷积神经网络"><a href="#图卷积神经网络" class="headerlink" title="图卷积神经网络"></a>图卷积神经网络</h1><ul>
+<li>基本目标：==提取拓扑图的空间特征==</li>
+<li>根据图形神经网络==对节点进行分类==<ul>
+<li>对<strong>日志结构==数据==<strong>和每条</strong>日志==节点特征==<strong>进行</strong>卷积操作</strong></li>
+</ul>
+</li>
+<li>本实验采用的图卷积神经网络模型核心公式—向前传播公式<ul>
+<li><img src="/img/image-20210925104618066.png" srcset="/img/loading.gif" lazyload alt="image-20210925104618066"></li>
+<li><img src="/img/image-20210925104632235.png" srcset="/img/loading.gif" lazyload alt="image-20210925104632235"><ul>
+<li>A表示对<strong>基于日志</strong>所提出的==<strong>邻接矩阵</strong>的预处理==</li>
+</ul>
+</li>
+<li><strong>第一层卷积层</strong>：ReLU函数，<strong>第二层卷积层</strong>：softmax函数</li>
+<li>输出：==经过两层卷积得到的矩阵Z-==–》==每条日志记录属于爬虫记录的概率==</li>
+<li><img src="/img/image-20210925104959276.png" srcset="/img/loading.gif" lazyload alt="image-20210925104959276"></li>
+<li>爬虫识别整体流程</li>
+</ul>
+</li>
+</ul>
+<h1 id="爬虫识别方法的实现"><a href="#爬虫识别方法的实现" class="headerlink" title="爬虫识别方法的实现"></a>爬虫识别方法的实现</h1><h2 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h2><ul>
+<li>实验室用来<strong>收集用户的访问数据</strong>以及<strong>测试爬虫技术</strong>和反爬虫技术</li>
+<li>==人工对日志进行标注==<ul>
+<li>讲IP地址分为<strong>爬虫所使用的的IP</strong>和<strong>普通用户使用的IP</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><img src="/img/image-20210925105427325.png" srcset="/img/loading.gif" lazyload alt="image-20210925105427325" style="zoom:67%;" />
+
+<h2 id="实验参数"><a href="#实验参数" class="headerlink" title="实验参数"></a>实验参数</h2><h3 id="日志向量化模块"><a href="#日志向量化模块" class="headerlink" title="日志向量化模块"></a>日志向量化模块</h3><ul>
+<li><p>gensim模块进行Web日志的向量化处理</p>
+</li>
+<li><p>1通过代码处理讲每行日志读入并处理为<strong>csv格式的文件</strong></p>
+<ul>
+<li>HTTP 访问日志特征向量化模型的构建，使用gensim模块</li>
+<li>实验所需语料库：若干个访问请求组成的日志文件</li>
+<li>csv格式：文件以纯文本形式存储表格数据，文件的每一行都是一个数据记录，每个记录由一个或多个字段组成，用逗号分隔</li>
+</ul>
+</li>
+<li><p>对日志中的<strong>数值型特征</strong>进行<strong>归一化处理</strong></p>
+<ul>
+<li>时间戳、发送的字节数和响应状态码</li>
+</ul>
+</li>
+<li><p>对特殊符号进行过滤，只保留重要</p>
+<ul>
+<li>请求方式、URL、用户代理和 refer 字段 分词操作</li>
+</ul>
+</li>
+<li><p>2<strong>利用Word2Vec</strong>将文本数据转换成<strong>特征向量</strong></p>
+<ul>
+<li>利用 CountVectorizer 方法和 TfidfVectorizer 方法</li>
+</ul>
+</li>
+<li><img src="/img/image-20210925105920745.png" srcset="/img/loading.gif" lazyload alt="image-20210925105920745" style="zoom:67%;" />
+- 1X300矩阵
+- 开头：编号ID：日志的唯一标识
+- 结尾：分类标签（1爬虫，0人类）
+- <img src="/img/image-20210925110049526.png" srcset="/img/loading.gif" lazyload alt="image-20210925110049526" style="zoom:67%;" /></li>
+<li><p>邻接矩阵：对Web日志进行<strong>切分处理</strong>，提取每段会话之间的联系，<strong>提取出的信息</strong>将被用于构建==邻接矩阵==，充当==各节点的边==</p>
+</li>
+</ul>
+<h3 id="图神经网络模块"><a href="#图神经网络模块" class="headerlink" title="图神经网络模块"></a>图神经网络模块</h3><ul>
+<li><p>通过👆，将图节点的==<strong>向量矩阵+邻接矩阵</strong>==<strong>送入图神经网络</strong>训练</p>
+</li>
+<li><p>选取：卷积层数2+输入层+输出层=4层图神经网络模型</p>
+<p>选用：模型的epoch参数：200</p>
+</li>
+<li><p>三种图神经网络模型：GCN\GAT\GraphSage</p>
+<ul>
+<li>GCN最贴近训练样本</li>
+<li>GraphSage速度最快</li>
+<li>GAT最准确<ul>
+<li>在GCN基础上，改变了最初GCN给每个节点之间都分配一个非参数权重的做法，改用<strong>端到端结构捕获每个节点间的权重</strong></li>
+<li>使得重要节点获得更大权重</li>
+</ul>
+</li>
+<li>本文选用GAT模型</li>
+<li><img src="/img/image-20210925111040156.png" srcset="/img/loading.gif" lazyload alt="image-20210925111040156"></li>
+</ul>
+</li>
+</ul>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li><h2 id="使用Web日志作为数据集"><a href="#使用Web日志作为数据集" class="headerlink" title="使用Web日志作为数据集"></a>使用Web日志作为数据集</h2></li>
+<li><p>将日志类比文本</p>
+</li>
+<li><p>将日志转化为向量并构建图</p>
+<ul>
+<li>Word2Vec：提取日志的特征向量</li>
+<li>TF-IDF：计算节点之间的关联</li>
+<li>得到权重值—》建图</li>
+</ul>
+</li>
+<li><p>将构建的图输入图神经网络训练</p>
+</li>
+<li><p>训练后得到爬虫识别模型</p>
+<ul>
+<li>一个能分清爬虫请求和用户请求的分类器</li>
+</ul>
+</li>
+</ul>
+<h1 id="GAT"><a href="#GAT" class="headerlink" title="GAT"></a>GAT</h1><ul>
+<li>gnn这类图神经网络思想就是学习到==每个节点的特征==对于其==相邻更远节点的影响==，<strong>越近的节点影响越大</strong>。 通过这种影响的传播，从而获取到整个拓扑图的结构性的信息。</li>
+<li>基于空间的图卷积网络</li>
+<li>在聚合特征信息时，将注意机制用于<strong>确定节点邻域的权重</strong></li>
+<li></li>
+</ul>
+<h2 id="gensim"><a href="#gensim" class="headerlink" title="gensim"></a>gensim</h2><ul>
+<li>Gensim是一款开源的第三方Python工具包，用于从原始的非结构化的文本中，无监督地学习到文本隐层的主题向量表达。</li>
+<li>支持包括TF-IDF，LSA，LDA，和word2vec在内的多种主题模型算法</li>
+<li></li>
+</ul>
+<h1 id="图注意力神经网络（GAT）节点分类任务实现-CSDN"><a href="#图注意力神经网络（GAT）节点分类任务实现-CSDN" class="headerlink" title="图注意力神经网络（GAT）节点分类任务实现-CSDN"></a>图注意力神经网络（GAT）节点分类任务实现-CSDN</h1><ul>
+<li>处理图数据的神经网络结构：图神经网络</li>
+<li>图神经网络的研究与图嵌入或网络嵌入密切相关<ul>
+<li>数据挖掘和机器学习界日益关注的另一个课题</li>
+</ul>
+</li>
+<li>图嵌入算法—》（大多）无监督算法<ul>
+<li>矩阵分解</li>
+<li>随机游走</li>
+<li>深度学习方法<ul>
+<li>属于图神经网络，包括：<ul>
+<li>基于图自动编码器的算法</li>
+<li>基于图自动编码器的算法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>图神经网络分为五大类：<ul>
+<li>图卷积网络</li>
+<li>图注意力网络</li>
+<li>图自编码器</li>
+<li>图生成网络</li>
+<li>图时空网络</li>
+</ul>
+</li>
+<li>cora数据集包含1433个独特单词，所以==特征是1433维==。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></div></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 获取并分析数据集</span><br><span class="hljs-keyword">from</span> torch_geometric.datasets <span class="hljs-keyword">import</span> Planetoid<br><span class="hljs-keyword">from</span> torch_geometric.transforms <span class="hljs-keyword">import</span> NormalizeFeatures<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> torch.nn <span class="hljs-keyword">import</span> Linear<br><span class="hljs-keyword">import</span> torch.nn.functional <span class="hljs-keyword">as</span> F<br><span class="hljs-keyword">from</span> torch_geometric.nn <span class="hljs-keyword">import</span> GATConv<br> <br>dataset = Planetoid(root=<span class="hljs-string">&#x27;data/Planetoid&#x27;</span>, name=<span class="hljs-string">&#x27;citeseer&#x27;</span>,transform=NormalizeFeatures())<br> <br><span class="hljs-comment">###神经网络的构造</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">GCN</span>(torch.nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, hidden_channels</span>):<br>        <span class="hljs-built_in">super</span>(GCN, self).__init__()<br>        torch.manual_seed(<span class="hljs-number">12345</span>)<br>        self.conv1 = GCNConv(dataset.num_features, hidden_channels)<br>        self.conv2 = GCNConv(hidden_channels, dataset.num_classes)<br>        <span class="hljs-comment"># self.lin1 = Linear(dataset.num_features, hidden_channels)</span><br>        <span class="hljs-comment"># self.lin2 = Linear(hidden_channels, dataset.num_classes)</span><br> <br> <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x, edge_index</span>):<br>        <span class="hljs-comment"># x = self.lin1(x)</span><br>        x = self.conv1(x, edge_index)<br>        x = x.relu()<br>        x = F.dropout(x, p=<span class="hljs-number">0.5</span>, training=self.training)<br>        x = self.conv2(x, edge_index)<br>        <span class="hljs-comment">#x = self.lin2(x)</span><br>        <span class="hljs-keyword">return</span> x<br> <br>model = GCN(hidden_channels=<span class="hljs-number">16</span>)<br><span class="hljs-built_in">print</span>(model)<br> <br> <br><span class="hljs-comment">###模型的训练</span><br>model = GCN(hidden_channels=<span class="hljs-number">16</span>)<br>optimizer = torch.optim.Adam(model.parameters(), lr=<span class="hljs-number">0.01</span>, weight_decay=<span class="hljs-number">5e-4</span>) <span class="hljs-comment">##定义Adam优化器</span><br>criterion = torch.nn.CrossEntropyLoss() <span class="hljs-comment">##交叉熵损失</span><br> <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>():<br>      model.train()<br>      optimizer.zero_grad()  <span class="hljs-comment"># Clear gradients.</span><br>      out = model(data.x, data.edge_index)  <span class="hljs-comment"># Perform a single forward pass.</span><br>      loss = criterion(out[data.train_mask], data.y[data.train_mask])  <span class="hljs-comment"># Compute the loss solely based on the training nodes.</span><br>      loss.backward()  <span class="hljs-comment"># Derive gradients.</span><br>      optimizer.step()  <span class="hljs-comment"># Update parameters based on gradients.</span><br>      <span class="hljs-keyword">return</span> loss<br> <br><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-number">201</span>):<br>    loss = train()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Epoch: <span class="hljs-subst">&#123;epoch:03d&#125;</span>, Loss: <span class="hljs-subst">&#123;loss:<span class="hljs-number">.4</span>f&#125;</span>&#x27;</span>)<br> <br><span class="hljs-comment">##模型的测试 这部分与MLP神经网络相同</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test</span>():<br>      model.<span class="hljs-built_in">eval</span>()<br>      out = model(data.x, data.edge_index)<br>      pred = out.argmax(dim=<span class="hljs-number">1</span>)  <span class="hljs-comment"># Use the class with highest probability.</span><br>      test_correct = pred[data.test_mask] == data.y[data.test_mask]  <span class="hljs-comment"># Check against ground-truth labels.</span><br>      test_acc = <span class="hljs-built_in">int</span>(test_correct.<span class="hljs-built_in">sum</span>()) / <span class="hljs-built_in">int</span>(data.test_mask.<span class="hljs-built_in">sum</span>())  <span class="hljs-comment"># Derive ratio of correct predictions.</span><br>      <span class="hljs-keyword">return</span> test_acc<br> <br>test_acc = test()<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Test Accuracy: <span class="hljs-subst">&#123;test_acc:<span class="hljs-number">.4</span>f&#125;</span>&#x27;</span>)<br> <br><span class="hljs-comment">##可视化</span><br>model.<span class="hljs-built_in">eval</span>()<br> <br>out = model(data.x, data.edge_index)<br>visualize(out, color=data.y)<br> <br> <br> <br> <br></code></pre></td></tr></table></figure>
+
+<h1 id="代码理解"><a href="#代码理解" class="headerlink" title="代码理解"></a>代码理解</h1><h2 id="word2vec-demo：文本处理成向量"><a href="#word2vec-demo：文本处理成向量" class="headerlink" title="word2vec_demo：文本处理成向量"></a>word2vec_demo：文本处理成向量</h2><blockquote>
+<p>可以获得每条日志的词向量表示</p>
+<p>得到图神经网络模型的一个输入：每个节点的特征描述</p>
+</blockquote>
+<ul>
+<li>data_preprocessing.py：数据预处理<ul>
+<li>keyword_vectorize将关键词用tf-idf编码</li>
+<li>abstract_vectorize将摘要转换成特征向量</li>
+<li>lab_extra提取数据集的标记<ul>
+<li>labelEncoder将问题转化成一个多分类问题</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>model_prediction.py：验证性能？？？</li>
+<li>pre：对数据正则，清楚特殊字符和数字<ul>
+<li>分词</li>
+<li>过滤特殊符号</li>
+<li>clean_en_：正则函数</li>
+</ul>
+</li>
+<li>word2vec.py：把词向量转化成<strong>特征向量</strong><ul>
+<li>softmax</li>
+<li>back_propagate<ul>
+<li>优化网络</li>
+<li>输入层、隐含层、输出层传播</li>
+</ul>
+</li>
+<li>train<ul>
+<li>提取单词对应的索引序号</li>
+<li>可以通过此训练或者👇skipgram训练</li>
+</ul>
+</li>
+<li>skip_gram<ul>
+<li>训练词向量</li>
+<li>从corpus（一行表示一句话）入口</li>
+</ul>
+</li>
+<li>get_word_pairs<ul>
+<li>把一句话转成单词对</li>
+<li>用于训练网络模型</li>
+<li>由sentence—》word_pair</li>
+</ul>
+</li>
+<li>init_net<ul>
+<li>初始化网络参数</li>
+</ul>
+</li>
+<li>errorfunc<ul>
+<li>损失函数</li>
+</ul>
+</li>
+<li>TrendLine<ul>
+<li>绘制损失曲线</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="session-split会话切分"><a href="#session-split会话切分" class="headerlink" title="session-split会话切分"></a>session-split会话切分</h2><ul>
+<li>getdata.py读取每行数据并处理成csv格式<ul>
+<li>getdata（文件路径、文件输出）</li>
+<li>.log–》.csv</li>
+</ul>
+</li>
+<li>merge_ip.py合并ip<ul>
+<li>funct1获取ip前两位</li>
+<li>funct2返回分类好的ip序号，c存储分类数据</li>
+<li>funct3返回分类好的ip，c存储分类的ip</li>
+</ul>
+</li>
+<li>processing.py<ul>
+<li>processing（路径，数组，文件名）<ul>
+<li>train_list获取所有ip</li>
+<li>divided_by_time1会话切分</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>session_i.py会话切分<ul>
+<li>divided_by_time（数据，长度，文件名）</li>
+<li>divided_by_time1</li>
+</ul>
+</li>
+<li>timestamp.py<ul>
+<li>输入data：.csv，转化成时间戳</li>
+</ul>
+</li>
+<li>text_csv.py<ul>
+<li>打开文件</li>
+</ul>
+</li>
+</ul>
+<img src="/img/image-20210928222712896.png" srcset="/img/loading.gif" lazyload alt="image-20210928222712896" style="zoom:80%;" />
+
+<p><img src="/img/image-20211005114803708.png" srcset="/img/loading.gif" lazyload alt="image-20211005114803708"></p>
+<p><img src="/img/image-20211005114932552.png" srcset="/img/loading.gif" lazyload alt="image-20211005114932552"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/paper%E9%98%85%E8%AF%BB/">paper阅读</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">图神经网络</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%88%AC%E8%99%AB%E8%AF%86%E5%88%AB%E6%96%B9%E6%B3%95%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">基于半监督学习爬虫识别方法的研究与实现</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/26/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%80%E4%BB%8B/">
+                        <span class="hidden-mobile">图神经网络简介</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AE%97%E6%B3%95/';
+          this.page.identifier = '/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AE%97%E6%B3%95/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

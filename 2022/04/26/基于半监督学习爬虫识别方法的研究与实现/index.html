@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <link rel="icon" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yang Qiya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="基于半监督学习爬虫识别方法的研究与实现-高航-笔记1、背景 网站承受海量级访问流量负载 要识别网络爬虫+减轻网站负载压力  现有的网络爬虫技术传统的启发式规则方法流程式地判别网络爬虫 but 传统的启 发式的网络爬虫识别技术已经难以有效地识别隐藏较深的网络爬虫 现有：使用最广泛的是【有监督学习方式的机器学习方法】，  需要大量的有标注的数据集，通过有监督的方式训练分类器从而完成分类 能够得到较好的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于半监督学习爬虫识别方法的研究与实现">
+<meta property="og:url" content="http://example.com/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%88%AC%E8%99%AB%E8%AF%86%E5%88%AB%E6%96%B9%E6%B3%95%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0/index.html">
+<meta property="og:site_name" content="Qiya">
+<meta property="og:description" content="基于半监督学习爬虫识别方法的研究与实现-高航-笔记1、背景 网站承受海量级访问流量负载 要识别网络爬虫+减轻网站负载压力  现有的网络爬虫技术传统的启发式规则方法流程式地判别网络爬虫 but 传统的启 发式的网络爬虫识别技术已经难以有效地识别隐藏较深的网络爬虫 现有：使用最广泛的是【有监督学习方式的机器学习方法】，  需要大量的有标注的数据集，通过有监督的方式训练分类器从而完成分类 能够得到较好的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image-20210916235637113.png">
+<meta property="og:image" content="http://example.com/img/image-20210916235917330.png">
+<meta property="og:image" content="http://example.com/img/image-20210917151352941.png">
+<meta property="og:image" content="http://example.com/img/image-20210918162611628.png">
+<meta property="article:published_time" content="2022-04-26T00:37:02.000Z">
+<meta property="article:modified_time" content="2022-04-26T00:37:46.376Z">
+<meta property="article:author" content="Yang Qiya">
+<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="paper阅读">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="半监督学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/image-20210916235637113.png">
+  
+  
+  <title>基于半监督学习爬虫识别方法的研究与实现 - Qiya</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qiya&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="基于半监督学习爬虫识别方法的研究与实现">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-26 08:37" pubdate>
+        April 26, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      31 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">基于半监督学习爬虫识别方法的研究与实现</h1>
+            
+            <div class="markdown-body">
+              <h1 id="基于半监督学习爬虫识别方法的研究与实现-高航-笔记"><a href="#基于半监督学习爬虫识别方法的研究与实现-高航-笔记" class="headerlink" title="基于半监督学习爬虫识别方法的研究与实现-高航-笔记"></a>基于半监督学习爬虫识别方法的研究与实现-高航-笔记</h1><h1 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h1><ul>
+<li>网站承受海量级访问流量负载</li>
+<li>要识别网络爬虫+减轻网站负载压力</li>
+</ul>
+<h2 id="现有的网络爬虫技术"><a href="#现有的网络爬虫技术" class="headerlink" title="现有的网络爬虫技术"></a>现有的网络爬虫技术</h2><p>传统的启发式规则方法流程式地判别网络爬虫</p>
+<p>but</p>
+<p>传统的启 发式的网络爬虫识别技术已经难以有效地识别隐藏较深的网络爬虫</p>
+<h2 id="现有："><a href="#现有：" class="headerlink" title="现有："></a>现有：</h2><p>使用最广泛的是【有监督学习方式的机器学习方法】，</p>
+<ul>
+<li>需要大量的有标注的数据集，通过有监督的方式训练分类器从而完成分类<ul>
+<li>能够得到较好的分类效果</li>
+</ul>
+</li>
+<li>但在训练集的标注工作上将耗费大量的人力、分类器泛化能力较差</li>
+</ul>
+<p><strong>所以</strong></p>
+<p>够同时利用有标注的数据和无标注的数据训练分类器的半监督学习方法成为了新的研究方向。 </p>
+<p>以日志形式存储的 Web 访问请求数据以及网络爬虫行为与正常 </p>
+<p>用户行为的区别的特点</p>
+<p>文本处理中向量化技术</p>
+<p>鉴别网络爬虫—》</p>
+<ul>
+<li>更好滴利用爬虫技术</li>
+<li>组织恶意爬虫带来的危害</li>
+</ul>
+<p>爬虫识别技术：信息封闭</p>
+<p>爬虫技术：发展开放成熟</p>
+<p><strong>机器学习方法：</strong></p>
+<ul>
+<li>文本分类</li>
+<li>日志异常检测</li>
+<li>爬虫识别技术上准确率较好</li>
+</ul>
+<p><strong>有监督学习方法</strong></p>
+<ul>
+<li>有监督训练分类器</li>
+<li>需要大量的带有标签的数据集<ul>
+<li>人力投入</li>
+<li>结果模型泛化能力差</li>
+</ul>
+</li>
+</ul>
+<p><strong>半监督学习</strong></p>
+<ul>
+<li>同时利用有标签的数据和无标签的数据训练文本分类器</li>
+<li>找出数据之间的联系，同时利用上述两种特征信息</li>
+<li>提高爬虫识别方法的精确率</li>
+<li>解决训练数据样本不足</li>
+<li>人工标注数据费时费力</li>
+</ul>
+<h1 id="第二章-相关理论与关键技术概述"><a href="#第二章-相关理论与关键技术概述" class="headerlink" title="第二章 相关理论与关键技术概述"></a>第二章 相关理论与关键技术概述</h1><h2 id="1、网络爬虫技术概述"><a href="#1、网络爬虫技术概述" class="headerlink" title="1、网络爬虫技术概述"></a>1、网络爬虫技术概述</h2><ul>
+<li>本质：脚本程序</li>
+<li>根据既定的规则对万维网上的资源进<br>行访问</li>
+<li>对访问的资源进行过滤、下载并保存以完成数据采集</li>
+<li>分类：<ul>
+<li>通用网络爬虫<ul>
+<li><strong>依次访问 URL 相对应的网页</strong></li>
+<li>在爬取网页的同时发现新的链<br>接进行解析得到新的 URL</li>
+<li>将其添加到待爬取列表</li>
+<li>去掉网页中的所有标签仅保留文本信息，将这些文本信息保存到相应的数据库存储归档</li>
+<li>重复上述步骤遍历</li>
+</ul>
+</li>
+<li>主题网络爬虫<ul>
+<li>为了抓取用户感兴趣的某一主题相关的网页而产生</li>
+<li>针对性更强</li>
+<li>有选择地访问与预设主题相关的网页</li>
+<li>如何分析并识别与预设主题相关的网页是主题网络爬虫的核心机制</li>
+</ul>
+</li>
+<li>深层网络爬虫<ul>
+<li>对象一般是动态的网页</li>
+<li>无法通过静态链接获取</li>
+<li>需要附上表单信息才能获取到</li>
+<li>与通用网络爬虫的区别：<ul>
+<li>是否需要提交表单信息</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2、网络爬虫核心技术"><a href="#2、网络爬虫核心技术" class="headerlink" title="2、网络爬虫核心技术"></a>2、网络爬虫核心技术</h2><h3 id="模拟浏览器"><a href="#模拟浏览器" class="headerlink" title="模拟浏览器"></a>模拟浏览器</h3><ul>
+<li>编写<strong>脚本程序</strong>控制浏览器的行为以实现<strong>数据的爬取</strong></li>
+<li>网页对应的 JS、CSS 等文件都会被执行并下载</li>
+</ul>
+<h2 id="3、网络爬虫识别技术"><a href="#3、网络爬虫识别技术" class="headerlink" title="3、网络爬虫识别技术"></a>3、网络爬虫识别技术</h2><ul>
+<li>基于启发式规则</li>
+</ul>
+<h1 id="第三章-基于半监督学习的日志分类模型"><a href="#第三章-基于半监督学习的日志分类模型" class="headerlink" title="第三章 基于半监督学习的日志分类模型"></a>第三章 基于半监督学习的日志分类模型</h1><h2 id="1、数据预处理"><a href="#1、数据预处理" class="headerlink" title="1、数据预处理"></a>1、数据预处理</h2><h3 id="日志数据集"><a href="#日志数据集" class="headerlink" title="日志数据集"></a>日志数据集</h3><ul>
+<li>网站访问日志<ul>
+<li>记录每个IP访问的足迹</li>
+<li>数据预处理-》会话切分-》利用日志相关特征建图-》数据的词向量</li>
+</ul>
+</li>
+<li>HTTP访问记录日志<ul>
+<li>以W3C日志文件格式居多</li>
+<li>由以下字段组成：客户端IP地址<ul>
+<li>包含：日期+时间+时区的时间戳+……</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="会话切分"><a href="#会话切分" class="headerlink" title="会话切分"></a>会话切分</h3><ul>
+<li>将日志文本文件切分为一个会话列表</li>
+<li>会话：<ul>
+<li>一组连续的具有相同访问行为的请求组成</li>
+<li>会话切分就是将【网络日志切分为多个会话】</li>
+<li>基于<strong>时间</strong>的启<strong>发式会话识别方</strong>法中实验效果最好的一种作为实验的日志会话切分方法</li>
+</ul>
+</li>
+</ul>
+<p>将具有<strong>相同用户代理的请求</strong>和 <strong>IP 地址前两段相同</strong>的访问记录划分为<strong>单</strong><br><strong>个用户</strong></p>
+<h3 id="日志文本向量化"><a href="#日志文本向量化" class="headerlink" title="日志文本向量化"></a>日志文本向量化</h3><ul>
+<li>构建词向量字典<ul>
+<li>​    Word2Vec中的Skip-gram模型</li>
+</ul>
+</li>
+<li>获取日志文本的词向量</li>
+</ul>
+<ul>
+<li>设计出一种<strong>基于滑动窗口日志</strong>建立<strong>邻接矩阵</strong>的方法建<strong>图</strong></li>
+<li>使用<strong>图卷积神经网络</strong>来对建立好的<strong>图</strong>进行模型的<strong>半监督训练</strong></li>
+</ul>
+<h3 id="建图"><a href="#建图" class="headerlink" title="建图"></a>建图</h3><ul>
+<li>文本分类的算法</li>
+<li>文本分类领域中基于神经网络结构的 Word2Vec 模型</li>
+<li>常用于情感分析等应用</li>
+<li>每条日志用向量组表示，每组向量组之间使用 TF-IDF 关键词计算权重，再将每组向量组联系起来</li>
+</ul>
+<h4 id="Word2Vec模型"><a href="#Word2Vec模型" class="headerlink" title="Word2Vec模型"></a>Word2Vec模型</h4><ul>
+<li>获取词向量的工具包</li>
+<li>将一个词转化为向量</li>
+<li>是一个简单的神经网络模型</li>
+<li>输入：高维向量—-》包含相邻词关系的输出向量<ul>
+<li>权重矩阵！</li>
+<li>训练过程中的参数！</li>
+</ul>
+</li>
+<li>CBOW 模型：<ul>
+<li>输入：目标词</li>
+<li>输出：上下词语的词向量</li>
+</ul>
+</li>
+<li>Skip-gram模型：<ul>
+<li>输入：上下文词语</li>
+<li>输出：目标词的词向量</li>
+</ul>
+</li>
+</ul>
+<h3 id="日志文本向量化-1"><a href="#日志文本向量化-1" class="headerlink" title="日志文本向量化"></a>日志文本向量化</h3><ul>
+<li><p>文本是自然语言处理领域中的核心</p>
+</li>
+<li><p>所有的NLP都围绕文本开展</p>
+</li>
+<li><p>为什么向量化：</p>
+<ul>
+<li>让计算机读懂文字</li>
+</ul>
+</li>
+<li><p>自然语言数据vs日志数据</p>
+<ul>
+<li><p>自然：</p>
+<ul>
+<li>由不同的单词组成</li>
+</ul>
+</li>
+<li><p>日志：</p>
+<ul>
+<li><p>由<strong>单词、数字和特殊字符</strong>构成</p>
+</li>
+<li><p>表示计算机服务器的<strong>访问记录</strong>或<strong>系统进程记录</strong></p>
+</li>
+<li><p>形式是由人在机器上<strong>预设的模板</strong>打印生成的，是<strong>给人看</strong>的</p>
+</li>
+<li><p>W3C格式的日志文件：</p>
+<ul>
+<li><p>有几列特征以<strong>数字的形式</strong>存在</p>
+<ul>
+<li><strong>响应状态码</strong></li>
+<li>服务器发送的<strong>字节数</strong></li>
+</ul>
+</li>
+<li><p>以时间序列存在的时间特征</p>
+<ul>
+<li>可以转换为以<strong>数字形式</strong>存在的时间戳</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>将日志看成文本，对日志进行向量化处理</p>
+<ul>
+<li>日志文本向量化：<ol>
+<li>构建词向量<strong>字典</strong><ol>
+<li>本文中采用 Word2Vec 中的 <u>Skip-gram 模型</u>来构建词向量字典</li>
+<li>Skip-gram模型的目的在于：学习更新权重矩阵</li>
+</ol>
+</li>
+<li>根据已构建的词向量字典获取<strong>日志文本的词向量</strong></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/image-20210916235637113.png" srcset="/img/loading.gif" lazyload alt="image-20210916235637113"></p>
+<p><img src="/img/image-20210916235917330.png" srcset="/img/loading.gif" lazyload alt="image-20210916235917330"></p>
+<ul>
+<li>输出层和输入层都是一维向量</li>
+<li>最后通过Softmax Regression 计算概率<ul>
+<li>得到输入节点的相邻节点的概率分布</li>
+</ul>
+</li>
+<li>目的：<ul>
+<li>学习更新权重矩阵</li>
+<li>第 i 个单词的权重由 W 权重矩阵的第 i 行表示</li>
+</ul>
+</li>
+<li>我们<strong>所需要的词向量</strong>就是该模型<strong>隐藏层</strong>的<strong>权重矩阵</strong></li>
+</ul>
+<ul>
+<li>最后可以得到：<ul>
+<li>整个<strong>词向量字典</strong>在每条日志中<strong>形成的词向量</strong></li>
+<li>还需要对该词向量进行 TF-IDF的处理！（👇关键词权重计算算法）</li>
+</ul>
+</li>
+</ul>
+<h3 id="one-hot向量"><a href="#one-hot向量" class="headerlink" title="one-hot向量"></a>one-hot向量</h3><ul>
+<li>稀疏矩阵，维度灾难</li>
+<li>语义缺失<ul>
+<li>这种向量表示失去了词语之间的相似性</li>
+</ul>
+</li>
+</ul>
+<h3 id="数字归一化"><a href="#数字归一化" class="headerlink" title="数字归一化"></a>数字归一化</h3><ul>
+<li>目标：减小单个<strong>特征维度</strong>的<strong>跨度</strong></li>
+<li>只留下<strong>有用的信息</strong></li>
+</ul>
+<ul>
+<li>如果要对日志进行<strong>建图</strong>，以向量的形式表示<strong>每条日志和每条日志之间的关系</strong>，需要对这些数字形式存在的数据进行<strong>数据标准化</strong>的处理</li>
+<li>让<strong>不同纬度</strong>之间的特征在数值上具有<strong>一定的比较性</strong></li>
+<li>最常用的方法：<ul>
+<li>min-max标准化【本文采用】<ul>
+<li>离差标准化</li>
+<li>对原始数据的线性变换，使得结果落在[0,1]区间内</li>
+<li>min 为样本数据的最小值，max 为样本数据的最大值</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="对日志进行建图"><a href="#对日志进行建图" class="headerlink" title="对日志进行建图"></a>对日志进行建图</h3><ul>
+<li>以向量形式表示每条日志和日志之间的<strong>关系</strong><ul>
+<li>需要对数据（数字形式）进行<strong>数据标准化处理</strong>（👆数字归一化）</li>
+</ul>
+</li>
+</ul>
+<h3 id="关键词边权重算法TF-IDF"><a href="#关键词边权重算法TF-IDF" class="headerlink" title="关键词边权重算法TF-IDF"></a>关键词边权重算法TF-IDF</h3><ul>
+<li><p>常用于<strong>资讯检索</strong>和**<u>文本</u>挖掘**的加权技术</p>
+</li>
+<li><p>TF ：词频</p>
+<ul>
+<li>若某一词语出现的频率较高，即 TF（Term Frequency）较高</li>
+</ul>
+</li>
+<li><p>IDF：逆向文件频率</p>
+<ul>
+<li>在其他的文本中出现较少，即 IDF（Inverse Document Frequency）较高</li>
+</ul>
+</li>
+<li><p>文本—》日志</p>
+<ul>
+<li><p>TF-IDF算法可以<strong>运用到日志处理</strong>中</p>
+</li>
+<li><p>日志处理：</p>
+<ul>
+<li>将<strong>整个日志文件</strong>看成<strong>所有文本文件的总</strong><br><strong>和</strong></li>
+<li>单条日志看成单个文件</li>
+<li>日志中的<strong>每个特征</strong>则是文本中的<strong>关键词</strong></li>
+</ul>
+</li>
+<li><p>文本之间的相似度计算：</p>
+<ul>
+<li>使用余弦相似度来表示每条日志向量两者之间的边权重</li>
+<li>余弦相似度的值越大就表示两者越相似</li>
+<li>余弦值<strong>越接近于 1</strong>，则表示两个向量的夹角越小，两个向量的方向越接近，即<strong>越相似；</strong></li>
+<li><strong>似度越高，即两个向量顶点之间的边权重值越大</strong></li>
+</ul>
+</li>
+<li><p>向量总数：访问日志的总条数</p>
+</li>
+<li><p>余弦值的范围为[-1,1]，我们需要将该值归一化到[0,1]</p>
+</li>
+<li><p><img src="/img/image-20210917151352941.png" srcset="/img/loading.gif" lazyload alt="image-20210917151352941"></p>
+</li>
+<li><p>相似度的范围就转变为[0,1]</p>
+</li>
+<li><p>结合<strong>日志的相关特征</strong>和 <strong>TF-IDF 算法</strong></p>
+</li>
+<li><p>计算出每条日志<strong>向量组之间的边权重</strong>，从而计算出<strong>每条日志之间的关联</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="日志建图算法"><a href="#日志建图算法" class="headerlink" title="日志建图算法"></a>日志建图算法</h3><ul>
+<li>得到以每条日志为单位的向量</li>
+<li>每条日志之间的边权重</li>
+</ul>
+<p>对以<strong>日志形式</strong>存在的<strong>访问记录文件</strong>进行建图：</p>
+<ul>
+<li>已有：<ul>
+<li>每个顶点和顶点之间相连的<strong>边权重值</strong></li>
+</ul>
+</li>
+<li>利用这些<strong>顶点和边</strong>权重建立一个以<strong>邻接矩阵</strong>形式存在的图结构</li>
+<li>数据集：<ul>
+<li>访问信息日志<ul>
+<li>在时间上跨度较大的访问请求之间本身并无联系</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基于滑动窗口的日志建立邻接矩阵的方法：<ul>
+<li>???</li>
+</ul>
+</li>
+</ul>
+<h2 id="图卷积神经网络GCN"><a href="#图卷积神经网络GCN" class="headerlink" title="图卷积神经网络GCN"></a>图卷积神经网络GCN</h2><ul>
+<li>Graph：图论中的用<strong>顶点和边</strong>建立<strong>相应关系</strong>的<strong>拓扑图</strong></li>
+<li>与传统CNN的区别：<ul>
+<li>传统的 CNN 虽然可以处理<strong>图片</strong>等<strong>欧式结构的数据</strong></li>
+<li>处理<strong>社交网络</strong>等非欧式结构数据却较难<ul>
+<li>图片：一般结构完整，由工整的<strong>矩阵</strong>组成</li>
+<li>社交网络：<strong>图论中的图</strong>，由顶点和边建立起的<strong>拓扑图</strong><ul>
+<li>反映了节点之间的相似性</li>
+<li>每个单数据样本就是一个节点，通过<strong>节点之间的相似性</strong>训练出更好的<strong>有助于提升分类效果</strong>的模型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="图卷积神经网络算法"><a href="#图卷积神经网络算法" class="headerlink" title="图卷积神经网络算法"></a>图卷积神经网络算法</h3><ul>
+<li>现如今有两大主流方法<ul>
+<li>基于空间的方法<ul>
+<li>核心：将图<strong>数据规则化</strong></li>
+<li>利用<strong>节点直接相连的邻居节点</strong>提取特征</li>
+</ul>
+</li>
+<li>基于频谱的方法<ul>
+<li>核心：利用<strong>谱图理论</strong>直接<strong>处理图数据</strong></li>
+<li>通过傅里叶变换或者拉普拉斯变换，借助图的拉普拉斯矩阵的<strong>特征值</strong>和<strong>特征向量</strong>研究图的性质</li>
+<li>得到用以识别分类网络爬虫的模型</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="半监督图卷积神经网络模型"><a href="#半监督图卷积神经网络模型" class="headerlink" title="半监督图卷积神经网络模型"></a>半监督图卷积神经网络模型</h3><ul>
+<li>核心：利用基于<strong>图的半监督学习方法</strong>进行<strong>节点分类</strong>的工作</li>
+<li>实质：将图卷积的核心理解为特征传播</li>
+<li>从</li>
+<li>基于频谱图卷积改进提出的方法</li>
+<li>频谱方法：<ul>
+<li>直接对<strong>图结构数据</strong>和<strong>节点特征</strong>进行卷积操作</li>
+</ul>
+</li>
+</ul>
+<p>在每个卷积层只处理<strong>一阶邻居特征</strong>，利用<strong>分层传播</strong>叠加多个卷积层来建立<strong>基于图卷积的神经网络</strong>模型以达到<strong>多阶邻居特征传播</strong></p>
+<h2 id="半监督学习爬虫识别方法结果与对比实验"><a href="#半监督学习爬虫识别方法结果与对比实验" class="headerlink" title="半监督学习爬虫识别方法结果与对比实验"></a>半监督学习爬虫识别方法结果与对比实验</h2><h4 id="数据采集"><a href="#数据采集" class="headerlink" title="数据采集"></a>数据采集</h4><ul>
+<li>在<strong>阿里云服务器</strong>上建立一个<strong>资讯网站</strong>来记录<strong>用户的访问</strong><br><strong>行为</strong></li>
+<li>模拟<strong>真实用户</strong>浏览访问<strong>门户网页</strong>并收集<strong>用户访问信息数据</strong>以研究测试<strong>爬虫技术</strong>以及<strong>爬虫识别技术</strong>等相关技术</li>
+</ul>
+<h4 id="实验参数"><a href="#实验参数" class="headerlink" title="实验参数"></a>实验参数</h4><h5 id="日志文本向量化模块"><a href="#日志文本向量化模块" class="headerlink" title="日志文本向量化模块"></a>日志文本向量化模块</h5><ul>
+<li>使用 gensim 模块来实现</li>
+<li>HTTP 访问日志特征向量化模型</li>
+<li>35679 个访问请求所组成的日志文件</li>
+<li>我们<strong>读取该日志文件的每行数据</strong>并处理成 <strong>csv 文件格式</strong><ul>
+<li>对日志中的<strong>时间戳</strong>、<strong>发送的字节数</strong>和<strong>响应状态码</strong>进行归一化处理</li>
+</ul>
+</li>
+</ul>
+<h4 id="半监督图卷积神经网络模块"><a href="#半监督图卷积神经网络模块" class="headerlink" title="半监督图卷积神经网络模块"></a>半监督图卷积神经网络模块</h4><p>👆处理完了数据</p>
+<ul>
+<li><strong>余弦相似度</strong>计算出每个<strong>顶点之间的边权重值</strong></li>
+<li>利用<strong>日志建立邻接矩阵算法</strong>得到<strong>有联系的边</strong>并保存</li>
+<li>将<strong>存储顶点向量数据的文件</strong>和<strong>边数据的文件</strong>送入<strong>图卷积神经网络模型</strong>进行训练</li>
+<li>使用<strong>深度学习框架Pytorch</strong>实现<strong>半监督图卷积神经网络模型</strong></li>
+<li></li>
+</ul>
+<p><img src="/img/image-20210918162611628.png" srcset="/img/loading.gif" lazyload alt="image-20210918162611628"></p>
+<h4 id="对比试验"><a href="#对比试验" class="headerlink" title="对比试验"></a>对比试验</h4><p>在网络爬虫识别领域效果较好的决策树模型和马尔科夫链模型</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/paper%E9%98%85%E8%AF%BB/">paper阅读</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0/">半监督学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%B3%A8%E6%84%8F%E5%8A%9B%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E7%AE%97%E6%B3%95/">
+                        <span class="hidden-mobile">基于图注意力网络的网络爬虫算法</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%88%AC%E8%99%AB%E8%AF%86%E5%88%AB%E6%96%B9%E6%B3%95%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0/';
+          this.page.identifier = '/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%88%AC%E8%99%AB%E8%AF%86%E5%88%AB%E6%96%B9%E6%B3%95%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
