@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <link rel="icon" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yang Qiya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="my-blog实战 端口设置防止冲突  该端口 防止启动多个项目时冲突    在app中用上一个组件 App.vue导入组件，注册组件 组件的class名用在template&lt;&gt;中 组件的vue名用在import、components中    安装终端  传数据给placeholder试验   使用一个then函数，检测一下点击提交后是否上传成功      3 样式修改 scoped：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="my-blog实战">
+<meta property="og:url" content="http://example.com/2022/05/02/my-blog%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="Qiya">
+<meta property="og:description" content="my-blog实战 端口设置防止冲突  该端口 防止启动多个项目时冲突    在app中用上一个组件 App.vue导入组件，注册组件 组件的class名用在template&lt;&gt;中 组件的vue名用在import、components中    安装终端  传数据给placeholder试验   使用一个then函数，检测一下点击提交后是否上传成功      3 样式修改 scoped：">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/image-20220301204831187.png">
+<meta property="og:image" content="http://example.com/img/image-20220301195534726.png">
+<meta property="og:image" content="http://example.com/img/image-20220301200509593.png">
+<meta property="og:image" content="http://example.com/img/image-20220301205329493.png">
+<meta property="og:image" content="http://example.com/img/image-20220301205437540.png">
+<meta property="og:image" content="http://example.com/img/image-20220301205844524.png">
+<meta property="og:image" content="http://example.com/img/image-20220301210023205.png">
+<meta property="og:image" content="http://example.com/img/image-20220301211043825.png">
+<meta property="og:image" content="http://example.com/img/image-20220301211118817.png">
+<meta property="og:image" content="http://example.com/img/image-20220302111147021.png">
+<meta property="og:image" content="http://example.com/img/image-20220301211232083.png">
+<meta property="og:image" content="http://example.com/img/image-20220302110246941.png">
+<meta property="og:image" content="http://example.com/img/image-20220302110909720.png">
+<meta property="og:image" content="http://example.com/img/image-20220302111110760.png">
+<meta property="og:image" content="http://example.com/img/image-20220302111125259.png">
+<meta property="og:image" content="http://example.com/img/image-20220302120742530.png">
+<meta property="og:image" content="http://example.com/img/image-20220302121811833.png">
+<meta property="og:image" content="http://example.com/img/image-20220302122034727.png">
+<meta property="og:image" content="http://example.com/img/image-20220302122013811.png">
+<meta property="og:image" content="http://example.com/img/image-20220302122341536.png">
+<meta property="og:image" content="http://example.com/img/image-20220303150325106.png">
+<meta property="og:image" content="http://example.com/img/image-20220303150603971.png">
+<meta property="og:image" content="http://example.com/img/image-20220303150859690.png">
+<meta property="og:image" content="http://example.com/img/image-20220303150956962.png">
+<meta property="og:image" content="http://example.com/img/image-20220303164342258.png">
+<meta property="og:image" content="http://example.com/img/image-20220303150838373.png">
+<meta property="og:image" content="http://example.com/img/image-20220303150919931.png">
+<meta property="og:image" content="http://example.com/img/image-20220303174829384.png">
+<meta property="og:image" content="http://example.com/img/image-20220303165359564.png">
+<meta property="og:image" content="http://example.com/img/image-20220303165506054.png">
+<meta property="og:image" content="http://example.com/img/image-20220303165544354.png">
+<meta property="og:image" content="http://example.com/img/image-20220303165629731.png">
+<meta property="og:image" content="http://example.com/img/image-20220303165640519.png">
+<meta property="og:image" content="http://example.com/img/image-20220303165710304.png">
+<meta property="og:image" content="http://example.com/img/image-20220303170237166.png">
+<meta property="og:image" content="http://example.com/img/image-20220303173209614.png">
+<meta property="og:image" content="http://example.com/img/image-20220303173721484.png">
+<meta property="og:image" content="http://example.com/img/image-20220303174253313.png">
+<meta property="og:image" content="http://example.com/img/image-20220303174729267.png">
+<meta property="og:image" content="http://example.com/img/image-20220303202155497.png">
+<meta property="og:image" content="http://example.com/img/image-20220303202359608.png">
+<meta property="og:image" content="http://example.com/img/image-20220303202442018.png">
+<meta property="og:image" content="http://example.com/img/image-20220303202456961.png">
+<meta property="og:image" content="http://example.com/img/image-20220303202545027.png">
+<meta property="og:image" content="http://example.com/img/image-20220303202704441.png">
+<meta property="og:image" content="http://example.com/img/image-20220302103416845.png">
+<meta property="article:published_time" content="2022-05-02T06:19:22.000Z">
+<meta property="article:modified_time" content="2022-05-02T06:43:14.110Z">
+<meta property="article:author" content="Yang Qiya">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/image-20220301204831187.png">
+  
+  
+  <title>my-blog实战 - Qiya</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qiya&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="my-blog实战">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-02 14:19" pubdate>
+        May 2, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      25 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">my-blog实战</h1>
+            
+            <div class="markdown-body">
+              <h1 id="my-blog实战"><a href="#my-blog实战" class="headerlink" title="my-blog实战"></a>my-blog实战</h1><p><img src="/img/image-20220301204831187.png" srcset="/img/loading.gif" lazyload alt="image-20220301204831187"></p>
+<h2 id="端口设置防止冲突"><a href="#端口设置防止冲突" class="headerlink" title="端口设置防止冲突"></a>端口设置防止冲突</h2><p><img src="/img/image-20220301195534726.png" srcset="/img/loading.gif" lazyload alt="image-20220301195534726"></p>
+<ul>
+<li>该端口<ul>
+<li>防止启动多个项目时冲突</li>
+</ul>
+</li>
+</ul>
+<h2 id="在app中用上一个组件"><a href="#在app中用上一个组件" class="headerlink" title="在app中用上一个组件"></a>在app中用上一个组件</h2><ul>
+<li>App.vue导入组件，注册组件<ul>
+<li>组件的class名用在template&lt;&gt;中</li>
+<li>组件的vue名用在import、components中<img src="/img/image-20220301200509593.png" srcset="/img/loading.gif" lazyload alt="image-20220301200509593"></li>
+</ul>
+</li>
+</ul>
+<h2 id="安装终端"><a href="#安装终端" class="headerlink" title="安装终端"></a>安装终端</h2><p><img src="/img/image-20220301205329493.png" srcset="/img/loading.gif" lazyload alt="image-20220301205329493"></p>
+<p><img src="/img/image-20220301205437540.png" srcset="/img/loading.gif" lazyload alt=" "></p>
+<h2 id="传数据给placeholder试验"><a href="#传数据给placeholder试验" class="headerlink" title="传数据给placeholder试验"></a>传数据给placeholder试验</h2><p><img src="/img/image-20220301205844524.png" srcset="/img/loading.gif" lazyload alt="image-20220301205844524"></p>
+<p><img src="/img/image-20220301210023205.png" srcset="/img/loading.gif" lazyload alt="image-20220301210023205"></p>
+<ul>
+<li>使用一个then函数，检测一下点击提交后是否上传成功</li>
+<li><img src="/img/image-20220301211043825.png" srcset="/img/loading.gif" lazyload alt="image-20220301211043825"></li>
+</ul>
+<p><img src="/img/image-20220301211118817.png" srcset="/img/loading.gif" lazyload alt="image-20220301211118817"></p>
+<p><img src="/img/image-20220302111147021.png" srcset="/img/loading.gif" lazyload alt="image-20220302111147021"></p>
+<p><img src="/img/image-20220301211232083.png" srcset="/img/loading.gif" lazyload alt="image-20220301211232083"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="3-样式修改"><a href="#3-样式修改" class="headerlink" title="3 样式修改"></a>3 样式修改</h2><ul>
+<li><strong>scoped：针对当前界面</strong></li>
+<li>#add-blog * <strong>这个id下面的所有</strong></li>
+<li><img src="/img/image-20220302110246941.png" srcset="/img/loading.gif" lazyload alt="image-20220302110246941"></li>
+</ul>
+<p><img src="/img/image-20220302110909720.png" srcset="/img/loading.gif" lazyload alt="image-20220302110909720"></p>
+<p><img src="/img/image-20220302111110760.png" srcset="/img/loading.gif" lazyload alt="image-20220302111110760"></p>
+<p><img src="/img/image-20220302111125259.png" srcset="/img/loading.gif" lazyload alt="image-20220302111125259"></p>
+<h2 id="display-inline-block，block，inline元素的区别"><a href="#display-inline-block，block，inline元素的区别" class="headerlink" title="display:inline-block，block，inline元素的区别"></a><strong>display:inline-block，block，inline元素的区别</strong></h2><p>1、==display：block==将元素显示为块级元素，从而可以更好地操控元素的宽高，以及内外边距，<strong>每一个块级元素都是从新的一行开始</strong>。</p>
+<p>2、==display : inline==将元素显示为行内元素，高度，行高以及底边距不可改变，高度就是内容文字或者图片的宽度，不可以改变。<strong>多个相邻的行内元素排在同一行里</strong>，知道页面一行排列不下，才会换新的一行。</p>
+<p>3、==display：inline-block==看上去值名inline-block是一个混合产物，实际上确是如此，将元素显示为<strong>行内块状元素</strong>，设置该属性后<strong>，其他的行内块级元素会排列在同一行</strong>。比如我们li元素一个inline-block，使其<strong>既有block的宽度高度特性，又有inline的同行特性</strong>，<strong>在同一行内有不同高度内容的元素时</strong>，通常要**设置对齐方式如==vertical-align: top;==**来使元素顶部对齐。</p>
+<h2 id="cursor用户鼠标指针的样式"><a href="#cursor用户鼠标指针的样式" class="headerlink" title="cursor用户鼠标指针的样式"></a>cursor用户鼠标指针的样式</h2><p>cursor : 网页浏览时用户鼠标指针的样式或图形形状。<br>属性值：<br>default：默认光标（通常是一个箭头）<br>auto：默认，浏览器设置的光标<br>crosshair：光标为十字线<br>pointer：光标为一只手<br>move：光标为某对象可移动<br>text：光标指示文本<br>wait：光标指示程序正在忙（通常是一只表或者一个沙漏）</p>
+<figure class="highlight css"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs css">&lt;<span class="hljs-selector-tag">div</span> style= <span class="hljs-attribute">cursor</span>: <span class="hljs-string">&#x27;pointer&#x27;</span>, position: <span class="hljs-string">&#x27;relative&#x27;</span>, float: <span class="hljs-string">&#x27;right&#x27;</span>, marginTop: -<span class="hljs-number">14</span>&gt;&lt;/div&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="展示blog–showblog-vue请求数据"><a href="#展示blog–showblog-vue请求数据" class="headerlink" title="展示blog–showblog.vue请求数据"></a>展示blog–showblog.vue请求数据</h2><p><img src="/img/image-20220302120742530.png" srcset="/img/loading.gif" lazyload alt="image-20220302120742530"></p>
+<p><img src="/img/image-20220302121811833.png" srcset="/img/loading.gif" lazyload alt="image-20220302121811833"></p>
+<p><img src="/img/image-20220302122034727.png" srcset="/img/loading.gif" lazyload alt="image-20220302122034727"></p>
+<p><img src="/img/image-20220302122013811.png" srcset="/img/loading.gif" lazyload alt="image-20220302122013811"></p>
+<h2 id="如果json文件放在了本地："><a href="#如果json文件放在了本地：" class="headerlink" title="如果json文件放在了本地："></a>如果json文件放在了本地：</h2><p><img src="/img/image-20220302122341536.png" srcset="/img/loading.gif" lazyload alt="image-20220302122341536"></p>
+<ul>
+<li>json必须放<strong>在static里</strong></li>
+<li>get后改变路径</li>
+</ul>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p><img src="/img/image-20220303150325106.png" srcset="/img/loading.gif" lazyload alt="image-20220303150325106"></p>
+<p><img src="/img/image-20220303150603971.png" srcset="/img/loading.gif" lazyload alt="image-20220303150603971"></p>
+<p> <img src="/img/image-20220303150859690.png" srcset="/img/loading.gif" lazyload alt="image-20220303150859690"></p>
+<p><img src="/img/image-20220303150956962.png" srcset="/img/loading.gif" lazyload alt="image-20220303150956962"></p>
+<p><img src="/img/image-20220303164342258.png" srcset="/img/loading.gif" lazyload alt="image-20220303164342258"></p>
+<p><img src="/img/image-20220303150838373.png" srcset="/img/loading.gif" lazyload alt="image-20220303150838373"></p>
+<p><img src="/img/image-20220303150919931.png" srcset="/img/loading.gif" lazyload alt="image-20220303150919931"></p>
+<h2 id="局部自定义指令"><a href="#局部自定义指令" class="headerlink" title="局部自定义指令"></a>局部自定义指令</h2><p><img src="/img/image-20220303174829384.png" srcset="/img/loading.gif" lazyload alt="image-20220303174829384"></p>
+<h2 id="搜索框"><a href="#搜索框" class="headerlink" title="搜索框"></a>搜索框</h2><p><img src="/img/image-20220303165359564.png" srcset="/img/loading.gif" lazyload alt="image-20220303165359564"></p>
+<h2 id="过滤器-filter的使用"><a href="#过滤器-filter的使用" class="headerlink" title="过滤器 filter的使用"></a>过滤器 filter的使用</h2><p>管道左边是放的值|右边是要最它做的操作</p>
+<p><img src="/img/image-20220303165506054.png" srcset="/img/loading.gif" lazyload alt="image-20220303165506054"></p>
+<p><img src="/img/image-20220303165544354.png" srcset="/img/loading.gif" lazyload alt="image-20220303165544354"></p>
+<ul>
+<li>把title都大写</li>
+</ul>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><p><img src="/img/image-20220303165629731.png" srcset="/img/loading.gif" lazyload alt="image-20220303165629731"></p>
+<p><img src="/img/image-20220303165640519.png" srcset="/img/loading.gif" lazyload alt="image-20220303165640519"></p>
+<p><img src="/img/image-20220303165710304.png" srcset="/img/loading.gif" lazyload alt="image-20220303165710304"></p>
+<h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p><img src="/img/image-20220303170237166.png" srcset="/img/loading.gif" lazyload alt="image-20220303170237166"></p>
+<ul>
+<li>search会放在data中</li>
+<li>再给article加一个snippet，只放一点内容</li>
+</ul>
+<p><img src="/img/image-20220303173209614.png" srcset="/img/loading.gif" lazyload alt="image-20220303173209614"></p>
+<ul>
+<li>从data中找到search判断标题是否匹配</li>
+</ul>
+<p><img src="/img/image-20220303173721484.png" srcset="/img/loading.gif" lazyload alt="image-20220303173721484"></p>
+<ul>
+<li>遍历的是filteredBlogs<ul>
+<li>遍历时直接过滤，</li>
+<li>如果遍历原本的blogs，不会触发到filtered函数</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/image-20220303174253313.png" srcset="/img/loading.gif" lazyload alt="image-20220303174253313"></p>
+<p><img src="/img/image-20220303174729267.png" srcset="/img/loading.gif" lazyload alt="image-20220303174729267"></p>
+<ul>
+<li>变大写、简写都可以在filters内因为==xxx | filters==触发过滤器</li>
+<li>筛选内容 在every-blog中显示，显示的是==v-for=”blog in blogs”==中的blogs的内容<ul>
+<li>现在只想显示被筛选过后的，所以blogs改成filterblogs</li>
+<li>因为fliterblogs不是写成|filterblogs，是对原本blogs data做了变化，所以写在computed中</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h2 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h2><p><img src="/img/image-20220303202155497.png" srcset="/img/loading.gif" lazyload alt="image-20220303202155497"></p>
+<ul>
+<li>main.js中 使用vuerouter</li>
+</ul>
+<p><img src="/img/image-20220303202359608.png" srcset="/img/loading.gif" lazyload alt="image-20220303202359608"></p>
+<ul>
+<li>route.js中导入组件，写映射关系并导出</li>
+</ul>
+<p>main.js中导入写好的routs</p>
+<p><img src="/img/image-20220303202442018.png" srcset="/img/loading.gif" lazyload alt="image-20220303202442018"></p>
+<p><img src="/img/image-20220303202456961.png" srcset="/img/loading.gif" lazyload alt="image-20220303202456961">创建路由 new vuerouter</p>
+<p><img src="/img/image-20220303202545027.png" srcset="/img/loading.gif" lazyload alt="image-20220303202545027"></p>
+<p>挂载router在app容器里</p>
+<p><img src="/img/image-20220303202704441.png" srcset="/img/loading.gif" lazyload alt="image-20220303202704441"></p>
+<h1 id="DIY"><a href="#DIY" class="headerlink" title="DIY"></a>DIY</h1><ul>
+<li><p><strong>点击文字和框一起绑定：</strong></p>
+<ul>
+<li>label for=”vue”</li>
+<li>input id=”vue”<ul>
+<li>2个同名！</li>
+</ul>
+</li>
+<li>label的for和input的id配对</li>
+</ul>
+</li>
+<li><p><strong>使框在正中间：</strong></p>
+<ul>
+<li>容器：align-items:center</li>
+</ul>
+</li>
+<li><p><strong>checkbox与数组动态绑定：</strong></p>
+<ul>
+<li>每选择一个input（checkbox），其value会添加进数组中</li>
+<li>所以input中：<ul>
+<li>type=”checkbox”</li>
+<li>id=”vue”为了和外层label的for同步</li>
+<li>value=”vue.js” 要加的</li>
+<li>v-model=”blog.categories” 加给谁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>select通过数组显示再输出选择的值：</strong></p>
+<ul>
+<li><p>选择是在option上</p>
+</li>
+<li><p>option是”选项“显示所有：<option v-for="author in authors"></p>
+<ul>
+<li>  author  </li>
+</ul>
+</li>
+<li><p>select是选定的那个–“选择”</p>
+<ul>
+<li><select v-model="blog.author"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>使用跨域请求</strong></p>
+<ul>
+<li><p>安装 <code>axios</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">cnpm install axios --save<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>在 <code>src/main.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><span class="hljs-title class_">Vue</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">axios</span> = axios<br></code></pre></td></tr></table></figure></li>
+<li><p>select中option报错：</p>
+<ul>
+<li>Vue 2.2.0+的版本里，当在组件中使用v-for时，key是必须设置的。</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/image-20220302103416845.png" srcset="/img/loading.gif" lazyload alt="image-20220302103416845"></p>
+<ul>
+<li><option v-for="author in authors" :key="author.id">  author  </option></li>
+<li><p><strong>提交后撤去编辑界面</strong></p>
+<ul>
+<li>给编辑界面加个==v-if=“！submitted”==（还没提交时显示）</li>
+<li>在post函数（btn的点击函数）的.then中添加一行改变submitted状态：==this.submitted=true;//提交之后==</li>
+</ul>
+</li>
+<li><p><strong>post函数未实现：</strong></p>
+<ul>
+<li><p>使用axios和http不一样</p>
+</li>
+<li><p>http的前置工作：</p>
+<ul>
+<li><p>安装vueresource</p>
+</li>
+<li><p>main.js导入</p>
+<ul>
+<li>```javascript<br>import VueResource from ‘vue-resource’<br>Vue.use(VueResource);<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><br>  - AddBlog.vue中使用==<span class="hljs-keyword">this</span>.$http.post==发送<br><br>- axios：<br><br>  - <span class="hljs-keyword">import</span> axios from <span class="hljs-string">&#x27;axios&#x27;</span><br><br>  - Vue.prototype.axios = axios<br><br>  - ```javascript<br>    <span class="hljs-keyword">this</span>.axios( <br>        methods:<span class="hljs-string">&#x27;post&#x27;</span>,   url:<span class="hljs-string">&#x27;https://jsonplaceholder.typicode.com/posts&#x27;</span>,<br>    <span class="hljs-keyword">data</span>:toSend<br>     ).then(<span class="hljs-keyword">data</span>=&gt; <br>      console.log(<span class="hljs-keyword">data</span>);<br>      <span class="hljs-keyword">this</span>.submitted=<span class="hljs-literal">true</span>;<span class="hljs-comment">//提交之后</span><br>     )<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>使得整个框在正中间：</strong></p>
+<ul>
+<li><p>#blog-form表单设置一个最大宽度，和margin：20px auto；使得四周间距都为此</p>
+</li>
+<li><p>```css<br>#blog-form<br>  /* width: 400px; <em>/<br>  max-width: 400px;<br>  /</em> 四周间距 */<br>  margin: 20px auto;</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><br>- **动态生成不同颜色的标题**<br><br>  - ```javascript<br>    <span class="hljs-comment">// v-rainbow 动态改变颜色</span><br>    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Vue</span>.</span></span>directive(&#x27;rainbow&#x27;, <br>      bind(el,binding,vnode) <br>        <span class="hljs-comment">// 绑定的h3的颜色=随机生成</span><br>        el.style.color=<span class="hljs-string">&quot;#&quot;</span> +<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>random<span class="hljs-literal">()</span>.<span class="hljs-keyword">to</span><span class="hljs-constructor">String(16)</span>.slice(<span class="hljs-number">2</span>,<span class="hljs-number">8</span>);<br>       <br>     )<br></code></pre></td></tr></table></figure></li>
+<li><p>:style=”isActive”，可以通过在data中写一个active初值，methods中改变active变换样式</p>
+</li>
+</ul>
+</li>
+<li><p>配置路由</p>
+<ul>
+<li><p>router.js：</p>
+<ul>
+<li>导入组件</li>
+<li>export导出映射关系 path:’xxx’,component:xxx </li>
+</ul>
+</li>
+<li><p>main.js:</p>
+<ul>
+<li>导入vuerouter</li>
+<li>导入router.js</li>
+<li>创建路由对象 new  VueRouter</li>
+<li>挂载路由对象到app上</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/02/VUE%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">VUE笔记</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/26/%E5%9F%BA%E4%BA%8E%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E7%88%AC%E8%99%AB%E8%AF%86%E5%88%AB%E6%96%B9%E6%B3%95%E7%9A%84%E7%A0%94%E7%A9%B6%E4%B8%8E%E5%AE%9E%E7%8E%B0/">
+                        <span class="hidden-mobile">基于半监督学习爬虫识别方法的研究与实现</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2022/05/02/my-blog%E5%AE%9E%E6%88%98/';
+          this.page.identifier = '/2022/05/02/my-blog%E5%AE%9E%E6%88%98/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
