@@ -24,7 +24,7 @@
 <meta property="og:description" content="机器&#x2F;深度学习自己写代码记录txt变矩阵 [idx,:]第idx行所有列被[0-2]列赋值  &#96;&#96;&#96;pythonreturnMat[index,:] &#x3D; listFromLine[0:3]1234567    - 初始化矩阵：  - &#96;&#96;&#96;python    returnMat &#x3D; np.zeros((lenthOfLines,3))   去掉首位空格并按换行分割：  &#96;&#96;&#96;for line in">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-22T09:10:22.000Z">
-<meta property="article:modified_time" content="2022-04-22T09:10:43.021Z">
+<meta property="article:modified_time" content="2022-05-02T15:38:31.665Z">
 <meta property="article:author" content="Yang Qiya">
 <meta property="article:tag" content="深度学习">
 <meta property="article:tag" content="机器学习">
@@ -198,7 +198,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      627 字
+      1.1k 字
     </span>
   
 
@@ -207,7 +207,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6 分钟
+      10 分钟
     </span>
   
 
@@ -270,6 +270,17 @@
 <h2 id="batchsize设定"><a href="#batchsize设定" class="headerlink" title="batchsize设定"></a>batchsize设定</h2><ul>
 <li>设置为1，太小，速度会比较慢！</li>
 <li>如果太大：</li>
+</ul>
+<h2 id="决策树ID3算法"><a href="#决策树ID3算法" class="headerlink" title="决策树ID3算法"></a>决策树ID3算法</h2><h3 id="求当前节点中最多类别的label"><a href="#求当前节点中最多类别的label" class="headerlink" title="求当前节点中最多类别的label"></a>求当前节点中最多类别的label</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">label_count=NodeLabel(label_arr) <span class="hljs-comment">#计数label数组，获得label对象</span><br><span class="hljs-keyword">if</span>(label_count): <span class="hljs-comment">#当前节点的label对象不为空，新节点的label为类别最多的</span><br>    new_node.label=<span class="hljs-built_in">max</span>(label_count,key=label_count.get()) <span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>max函数，参数label_count是一个对象，根据key计数</li>
+</ul>
+<h3 id="label数组变对象"><a href="#label数组变对象" class="headerlink" title="label数组变对象"></a>label数组变对象</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 每个节点中各个类有多少个节点</span><br><span class="hljs-comment"># param：label数组</span><br><span class="hljs-comment"># return: label对象</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">NodeLabel</span>(<span class="hljs-params">label_arr</span>):<br>    label_count=&#123;&#125; <span class="hljs-comment">#store count of label</span><br><br>    <span class="hljs-keyword">for</span> label <span class="hljs-keyword">in</span> label_arr:<br>        <span class="hljs-keyword">if</span> label <span class="hljs-keyword">in</span> label_count:<br>            label_count[label]+=<span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            label_count[label]=<span class="hljs-number">1</span><br><br>    <span class="hljs-keyword">return</span> label_count<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>初始化对象=大括号</li>
+<li>key下value计数++：xx[label]+=1</li>
 </ul>
 
             </div>

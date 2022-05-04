@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <link rel="icon" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yang Qiya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1-2算法为什么会超时超时是怎么回事也就是说程序运行的时间超过了规定的时间 一般OJ（online judge）的超时时间就是1s 如果写出了一个$O(n)$的算法 可以估算出来n是多大的时候算法的执行时间就会超过1s了 &#x3D;&#x3D;如果n的规模已经足够让 O(n) 的算法运行时间超过了1s&#x3D;&#x3D; &#x3D;&#x3D;应该考虑**log(n)**的解法了&#x3D;&#x3D; 从硬件配置看计算机的性能计算机的运算速度主要看CPU的配置 2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1-2算法为什么会超时">
+<meta property="og:url" content="http://example.com/2022/04/22/1-2%E7%AE%97%E6%B3%95%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%B6%85%E6%97%B6/index.html">
+<meta property="og:site_name" content="Qiya">
+<meta property="og:description" content="1-2算法为什么会超时超时是怎么回事也就是说程序运行的时间超过了规定的时间 一般OJ（online judge）的超时时间就是1s 如果写出了一个$O(n)$的算法 可以估算出来n是多大的时候算法的执行时间就会超过1s了 &#x3D;&#x3D;如果n的规模已经足够让 O(n) 的算法运行时间超过了1s&#x3D;&#x3D; &#x3D;&#x3D;应该考虑**log(n)**的解法了&#x3D;&#x3D; 从硬件配置看计算机的性能计算机的运算速度主要看CPU的配置 2.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20201208231559175.png">
+<meta property="article:published_time" content="2022-04-22T09:11:39.000Z">
+<meta property="article:modified_time" content="2022-05-04T01:43:16.513Z">
+<meta property="article:author" content="Yang Qiya">
+<meta property="article:tag" content="leetcode刷题记录">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20201208231559175.png">
+  
+  
+  <title>1-2算法为什么会超时 - Qiya</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qiya&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="1-2算法为什么会超时">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-22 17:11" pubdate>
+        April 22, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      9 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">1-2算法为什么会超时</h1>
+            
+            <div class="markdown-body">
+              <h1 id="1-2算法为什么会超时"><a href="#1-2算法为什么会超时" class="headerlink" title="1-2算法为什么会超时"></a>1-2算法为什么会超时</h1><h1 id="超时是怎么回事"><a href="#超时是怎么回事" class="headerlink" title="超时是怎么回事"></a>超时是怎么回事</h1><p>也就是说<strong>程序运行的时间</strong>超过了规定的时间</p>
+<p>一般OJ（online judge）的超时时间就是1s</p>
+<p><strong>如果写出了一个$O(n)$的算法</strong></p>
+<p>可以<strong>估算</strong>出来n是多大的时候算法的执行时间就会超过1s了</p>
+<p>==<strong>如果n的规模已经足够让 O(n) 的算法运行时间超过了1s</strong>==</p>
+<p>==应该考虑**log(n)**的解法了==</p>
+<h1 id="从硬件配置看计算机的性能"><a href="#从硬件配置看计算机的性能" class="headerlink" title="从硬件配置看计算机的性能"></a>从硬件配置看计算机的性能</h1><p>计算机的运算速度主要看<strong>CPU的配置</strong></p>
+<p>2.7 GHz Dual-Core Intel Core i5 </p>
+<p>2.7 GHz 奔腾双核</p>
+<p>i5处理器</p>
+<p>1Hz 是CPU的一次脉冲（可以理解为一次改变状态，也叫时钟周期）</p>
+<p>1GHz = 10亿Hz</p>
+<p>表示CPU可以<strong>一秒脉冲10亿次</strong>（有10亿个时钟周期）</p>
+<p>👇</p>
+<p>例如1 + 2 = 3，cpu要<strong>执行四次</strong>才能完整这个操作,而不是一个时钟周期就是一次CPU运算</p>
+<p>同时cpu也要执行计算机的各种进程任务等，</p>
+<p>我们的程序仅仅是其中的一个进程而已</p>
+<p>👇</p>
+<p>我们的程序在计算机上究竟<strong>1s真正能执行多少次操作呢</strong>？</p>
+<h1 id="做个测试实验"><a href="#做个测试实验" class="headerlink" title="做个测试实验"></a>做个测试实验</h1><p>测试程序测<strong>1s内处理多大数量级数据</strong>:</p>
+<ul>
+<li>CPU执行<strong>每条指令所需的时间</strong>实际上并<strong>不相同</strong>，例如CPU执行<strong>加法</strong>和<strong>乘法</strong>操作的耗时实际上都是不一样的。</li>
+<li>现在大多计算机系统的内存管理都有<strong>缓存技术</strong>，所以频繁<strong>访问相同地址</strong>的数据和访问<strong>不相邻元素</strong>所需的时间也是不同的。</li>
+<li>计算机同时<strong>运行多个程序</strong>，每个程序里还有<strong>不同的进程线程</strong>在抢占资源。</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// O(n)</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">function1</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> n)</span> </span>&#123;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>        k++;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// O(n^2)</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">function2</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> n)</span> </span>&#123;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>            k++;<br>        &#125;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// O(nlogn)</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">function3</span><span class="hljs-params">(<span class="hljs-type">long</span> <span class="hljs-type">long</span> n)</span> </span>&#123;<br>    <span class="hljs-type">long</span> <span class="hljs-type">long</span> k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">long</span> <span class="hljs-type">long</span> j = <span class="hljs-number">1</span>; j &lt; n; j = j*<span class="hljs-number">2</span>) &#123; <span class="hljs-comment">// 注意这里j=1</span><br>            k++;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>内层循环：j=1开始，j*2步跳跃</p>
+<p><strong>整体测试数据整理如下：</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20201208231559175.png" srcset="/img/loading.gif" lazyload alt="程序超时1"></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">leetcode刷题记录</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/22/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%A2%84%E6%B5%8B%E7%B2%BE%E5%BA%A6%E4%B8%8D%E9%AB%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">模型的预测精度不高解决方法</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/22/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8BmAP/">
+                        <span class="hidden-mobile">目标检测mAP</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2022/04/22/1-2%E7%AE%97%E6%B3%95%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%B6%85%E6%97%B6/';
+          this.page.identifier = '/2022/04/22/1-2%E7%AE%97%E6%B3%95%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E8%B6%85%E6%97%B6/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <link rel="icon" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yang Qiya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="字符串12345string s1 &#x3D; &quot;hello&quot;;string s2;for(int i &#x3D; 0;i &lt; s1.size();++i)        s2[i] &#x3D; s1[i];cout &lt;&lt;s2&lt;&lt;endl;  123string str &#x3D; &quot;hello&quot;;for(auto &amp;c : str)    处理字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="字符串">
+<meta property="og:url" content="http://example.com/2022/04/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="Qiya">
+<meta property="og:description" content="字符串12345string s1 &#x3D; &quot;hello&quot;;string s2;for(int i &#x3D; 0;i &lt; s1.size();++i)        s2[i] &#x3D; s1[i];cout &lt;&lt;s2&lt;&lt;endl;  123string str &#x3D; &quot;hello&quot;;for(auto &amp;c : str)    处理字符">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008eGmZEly1gp0fvi91pfg30de0akwnq.gif">
+<meta property="article:published_time" content="2022-04-22T09:11:39.000Z">
+<meta property="article:modified_time" content="2022-05-04T01:52:33.843Z">
+<meta property="article:author" content="Yang Qiya">
+<meta property="article:tag" content="leetcode刷题记录">
+<meta property="article:tag" content="字符串">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/008eGmZEly1gp0fvi91pfg30de0akwnq.gif">
+  
+  
+  <title>字符串 - Qiya</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qiya&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="字符串">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-22 17:11" pubdate>
+        April 22, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      58 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">字符串</h1>
+            
+            <div class="markdown-body">
+              <h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp">string s1 = <span class="hljs-string">&quot;hello&quot;</span>;<br>string s2;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; s1.<span class="hljs-built_in">size</span>();++i)<br>        s2[i] = s1[i];<br>cout &lt;&lt;s2&lt;&lt;endl;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string str = <span class="hljs-string">&quot;hello&quot;</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;c : str)<br>    处理字符 c<br></code></pre></td></tr></table></figure>
+
+<p>把每个字符都变成大写</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	string str = <span class="hljs-string">&quot;asdfjkl&quot;</span>;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> it = str.<span class="hljs-built_in">begin</span>(); it != str.<span class="hljs-built_in">end</span>(); ++it)<br>	&#123;<br>		*it = <span class="hljs-built_in">toupper</span>(*it);<br>	&#125;<br>	cout &lt;&lt; str &lt;&lt; endl;  <span class="hljs-comment">// 输出ASDFJKL</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h1><h2 id="344-反转字符串"><a href="#344-反转字符串" class="headerlink" title="344. 反转字符串"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-string/">344. 反转字符串</a></h2><p><strong><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a>修改输入数组</strong></p>
+<p>使用 O(1) 的额外空间</p>
+<figure class="highlight prolog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs prolog">输入：s = [<span class="hljs-string">&quot;h&quot;</span>,<span class="hljs-string">&quot;e&quot;</span>,<span class="hljs-string">&quot;l&quot;</span>,<span class="hljs-string">&quot;l&quot;</span>,<span class="hljs-string">&quot;o&quot;</span>]<br>输出：[<span class="hljs-string">&quot;o&quot;</span>,<span class="hljs-string">&quot;l&quot;</span>,<span class="hljs-string">&quot;l&quot;</span>,<span class="hljs-string">&quot;e&quot;</span>,<span class="hljs-string">&quot;h&quot;</span>]<br></code></pre></td></tr></table></figure>
+
+<p><img src="https://tva1.sinaimg.cn/large/008eGmZEly1gp0fvi91pfg30de0akwnq.gif" srcset="/img/loading.gif" lazyload alt="344.反转字符串"></p>
+<h3 id="双指针-1"><a href="#双指针-1" class="headerlink" title="双指针"></a>双指针</h3><p>一个从字符串后面，两个指针同时向中间移动，并交换元素</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">reverseString</span><span class="hljs-params">(vector&lt;<span class="hljs-type">char</span>&gt;&amp; s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> n=s.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;<span class="hljs-comment">//左指针</span><br>        <span class="hljs-type">int</span> j=n<span class="hljs-number">-1</span>;<span class="hljs-comment">//右指针</span><br>            <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = n - <span class="hljs-number">1</span>; i &lt; j; i++, j--)&#123;<br>                <span class="hljs-type">int</span> tmp=s[i];<span class="hljs-comment">//交换左右两个元素</span><br>                s[i]=s[j];<br>                s[j]=tmp;<br>            &#125;<br>        &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="541-反转字符串-II"><a href="#541-反转字符串-II" class="headerlink" title="541. 反转字符串 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-string-ii/">541. 反转字符串 II</a></h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">reverseStr</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> k)</span> </span>&#123;<br>        <span class="hljs-comment">// //反转前k个</span><br>        <span class="hljs-comment">// for(int l=0,r=k-1;l&lt;=(k-1)/2;l++,k--)&#123;</span><br>        <span class="hljs-comment">//     swap(s[l],s[r]);//反转</span><br>        <span class="hljs-comment">// &#125;</span><br>        <span class="hljs-comment">//2k之后</span><br>        <span class="hljs-comment">// int n=s.size();</span><br>        <span class="hljs-comment">// if(n-2*k&lt;k)&#123;//剩余字符&lt;k个</span><br>        <span class="hljs-comment">//     for(int l=2*k,r=n-1;l&lt;=(r-l)/2;l++,r--)&#123;</span><br>        <span class="hljs-comment">//         swap(s[l],s[r]);//反转剩下的</span><br>        <span class="hljs-comment">//     &#125;</span><br>        <span class="hljs-comment">// &#125;</span><br>        <span class="hljs-comment">// else if(n-2*k&gt;=k)</span><br>        <span class="hljs-comment">// for(int m=2*k;m&lt;=2*k+k;m++)&#123;</span><br>        <span class="hljs-comment">// &#125;</span><br><br>        <span class="hljs-comment">//分组处理，每组间隔2k</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;s.<span class="hljs-built_in">size</span>();i+=<span class="hljs-number">2</span>*k)&#123;<br>            <span class="hljs-keyword">if</span>(i+k&lt;=s.<span class="hljs-built_in">size</span>())&#123;<br>                <span class="hljs-comment">// reverse(s[i],s[i+k]);</span><br>                <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>()+i,s.<span class="hljs-built_in">begin</span>()+i+k);<br>            &#125;<br>            <span class="hljs-keyword">else</span><span class="hljs-comment">//剩下不足k个</span><br>                <span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>()+i,s.<span class="hljs-built_in">end</span>());<span class="hljs-comment">//到最后一个元素</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> s;<br><br><br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>双指针是交换/反转时使用，此处直接使用reverse函数，不用双指针</li>
+</ul>
+<h2 id="“固定规律一段一段去处理字符串”"><a href="#“固定规律一段一段去处理字符串”" class="headerlink" title="“固定规律一段一段去处理字符串”"></a>“固定规律一段一段去处理字符串”</h2><p><strong>要想想在在for循环的表达式上做做文章</strong></p>
+<ul>
+<li><p>分组思想，==“每计数至 <code>2k</code> 个字符”—&gt;每组间隔2k==—-&gt;i=i+2k</p>
+<ul>
+<li>每组里分情况<ul>
+<li><strong>够k个</strong>，反转k个（前面的组）</li>
+<li><strong>不够k个</strong>，反转剩下全部（最后一组）（到s.end())</li>
+</ul>
+</li>
+</ul>
+<h2 id="字符串索引："><a href="#字符串索引：" class="headerlink" title="字符串索引："></a>字符串索引：</h2><ul>
+<li>s[i]数组法不行</li>
+<li>s.begin()开始s[0]</li>
+<li>s.begin()+k中间s[k]</li>
+<li>s.end()结尾s[s.size()-1]</li>
+</ul>
+</li>
+</ul>
+<h2 id="剑指-Offer-05-替换空格"><a href="#剑指-Offer-05-替换空格" class="headerlink" title="剑指 Offer 05. 替换空格"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/ti-huan-kong-ge-lcof/">剑指 Offer 05. 替换空格</a></h2><blockquote>
+<p>把字符串 <code>s</code> 中的每个<strong>空格</strong>替换成”%20”</p>
+</blockquote>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs perl">输入：s = <span class="hljs-string">&quot;We are happy.&quot;</span><br>输出：<span class="hljs-string">&quot;We%20are%20happy.&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>my:</p>
+<ul>
+<li>遍历字符串</li>
+<li>if(s[i]==’ ‘)<ul>
+<li><del>s[i]==’%20’</del></li>
+<li>res <strong>+=</strong>“%20”</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建新字符串"><a href="#创建新字符串" class="headerlink" title="创建新字符串"></a>创建新字符串</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">replaceSpace</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        string res;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;s.<span class="hljs-built_in">size</span>();i++)&#123;<br>            <span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27; &#x27;</span>)<br>                res +=<span class="hljs-string">&quot;%20&quot;</span>;<span class="hljs-comment">//为什么+=</span><br>            <span class="hljs-keyword">else</span><br>                res+=s[i];<span class="hljs-comment">//为什么+=？</span><br>        &#125;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>通过不断给新字符串添加元素</li>
+</ul>
+<h2 id="原始数组上增加空间-amp-双指针"><a href="#原始数组上增加空间-amp-双指针" class="headerlink" title="原始数组上增加空间&amp;双指针"></a>原始数组上增加空间&amp;双指针</h2><h3 id="数组填充类"><a href="#数组填充类" class="headerlink" title="==数组填充类=="></a>==<strong>数组填充类</strong>==</h3><ul>
+<li><p>改变某个字符</p>
+</li>
+<li><p>增加字符</p>
+</li>
+<li><p>删除字符（？）</p>
+</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>先预先给数组扩容带填充后的大小</strong></p>
+<p><strong>从后向前进行双指针操作</strong></p>
+</blockquote>
+<ul>
+<li>前向后填充：每次添加元素都要将添加元素之后的所有元素向后移动</li>
+<li>时刻记住：虽然是双指针，但空间只有一个，是在<strong>原位置上修改元素</strong></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">replaceSpace</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-comment">// 不定义新串,原始串扩增长度</span><br>        <span class="hljs-type">int</span> sOldSize=s.<span class="hljs-built_in">size</span>();<br>        <span class="hljs-comment">// 计数多少个空格</span><br>        <span class="hljs-type">int</span> count=<span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span>(i&lt;s.<span class="hljs-built_in">size</span>())&#123;<br>            <span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27; &#x27;</span>)<br>                count++;<br>            i++;<br>        &#125;<br><br>        <span class="hljs-comment">// 扩增长度 .resize()</span><br>        <span class="hljs-comment">// 空格处变成&quot;%20&quot;,即原大小+2个字符</span><br>        s.<span class="hljs-built_in">resize</span>(s.<span class="hljs-built_in">size</span>()+count*<span class="hljs-number">2</span>);<span class="hljs-comment">//注意*2,替换一个,增加两个</span><br>        <span class="hljs-type">int</span> sNewSize=s.<span class="hljs-built_in">size</span>();<span class="hljs-comment">//新尺寸</span><br>        <span class="hljs-comment">// 双指针，从后往前</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=sOldSize<span class="hljs-number">-1</span>,j=sNewSize<span class="hljs-number">-1</span>;i&gt;<span class="hljs-number">0</span>,j&gt;<span class="hljs-number">0</span>;i--,j--)&#123;<br>            <span class="hljs-keyword">if</span>(s[i]==<span class="hljs-string">&#x27; &#x27;</span>)&#123;<br>                s[j]=<span class="hljs-string">&#x27;0&#x27;</span>;<br>                j--;<br>                s[j]=<span class="hljs-string">&#x27;2&#x27;</span>;<br>                j--;<br>                s[j]=<span class="hljs-string">&#x27;%&#x27;</span>;<br>                <span class="hljs-comment">// s[j]=&#x27;0&#x27;;</span><br>                <span class="hljs-comment">// s[j-1]=&#x27;2&#x27;;</span><br>                <span class="hljs-comment">// s[j-2]=&#x27;%&#x27;;</span><br>                <span class="hljs-comment">// j-=2;</span><br>            &#125;<br>            <span class="hljs-keyword">else</span><br>                s[j]=s[i];<br>        &#125;<br><br>        <span class="hljs-keyword">return</span> s;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h1 id="151-翻转字符串里的单词"><a href="#151-翻转字符串里的单词" class="headerlink" title="151. 翻转字符串里的单词"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-words-in-a-string/">151. 翻转字符串里的单词</a></h1><p>逐个翻转字符串中的所有 <strong>单词</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs 空格">输入：s = &quot;the sky is blue&quot;<br>输出：&quot;blue is sky the&quot;<br>输入：s = &quot;  hello world  &quot;<br>输出：&quot;world hello&quot;<br>解释：翻转后的字符不能包括空格<br>输入：s = &quot;a good   example&quot;<br>输出：&quot;example good a&quot;<br>翻转后单词间的空格减少到只含一个<br></code></pre></td></tr></table></figure>
+
+<p>my：</p>
+<ul>
+<li>双指针，一左一右</li>
+<li>交换两个单词</li>
+<li>一个单词字符串存放每一个单词String word</li>
+<li>遇到空格就停止存放</li>
+</ul>
+<p>解题思路如下：</p>
+<h2 id="整体反转-局部反转-》反转单词顺序"><a href="#整体反转-局部反转-》反转单词顺序" class="headerlink" title="整体反转+局部反转==》反转单词顺序"></a>整体反转+局部反转==》反转单词顺序</h2><ul>
+<li><p>移除多余空格</p>
+<ul>
+<li><p>开头、结尾、中间第二三个空格</p>
+</li>
+<li><p>```cpp<br>// 删除字符串最前面的空格</p>
+<div class="code-wrapper"><pre><code class="hljs">if (s.size() &gt; 0 &amp;&amp; s[0] == &#39; &#39;) &#123;
+    s.erase(s.begin());
+</code></pre></div>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><br>- 将整个字符串反转<br><br>  - ```cpp<br>        // 反转字符串s中左闭又闭的区间[<span class="hljs-keyword">start</span>, <span class="hljs-keyword">end</span>]<br>        <span class="hljs-type">void</span> reverse(string&amp; s, <span class="hljs-type">int</span> <span class="hljs-keyword">start</span>, <span class="hljs-type">int</span> <span class="hljs-keyword">end</span>) &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-keyword">start</span>, j = <span class="hljs-keyword">end</span>; i &lt; j; i++, j<span class="hljs-comment">--) &#123;</span><br>                swap(s[i], s[j]);<br>            &#125;<br>        &#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>将每个单词反转</p>
+<ul>
+<li>```cpp<br>string reverseWords(string s) {<div class="code-wrapper"><pre><code class="hljs">    removeExtraSpaces(s);
+    reverse(s, 0, s.size() - 1);
+    for(int i = 0; i &lt; s.size(); i++) &#123;
+        int j = i;
+        // 查找单词间的空格，翻转单词
+        while(j &lt; s.size() &amp;&amp; s[j] != &#39; &#39;) j++;
+        reverse(s, i, j - 1);
+        i = j;
+    &#125;
+    return s;
+&#125;
+</code></pre></div>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><br>```cpp<br><span class="hljs-comment">// 版本一</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-comment">// 反转字符串s中左闭又闭的区间[start, end]</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">reverse</span><span class="hljs-params">(string&amp; s, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = start, j = end; i &lt; j; i++, j--) &#123;<br>            <span class="hljs-built_in">swap</span>(s[i], s[j]);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 移除冗余空格：使用双指针（快慢指针法）O(n)的算法</span><br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">removeExtraSpaces</span><span class="hljs-params">(string&amp; s)</span> </span>&#123;<br>        <span class="hljs-type">int</span> slowIndex = <span class="hljs-number">0</span>, fastIndex = <span class="hljs-number">0</span>; <span class="hljs-comment">// 定义快指针，慢指针</span><br>        <span class="hljs-comment">// 去掉字符串前面的空格</span><br>        <span class="hljs-keyword">while</span> (s.<span class="hljs-built_in">size</span>() &gt; <span class="hljs-number">0</span> &amp;&amp; fastIndex &lt; s.<span class="hljs-built_in">size</span>() &amp;&amp; s[fastIndex] == <span class="hljs-string">&#x27; &#x27;</span>) &#123;<br>            fastIndex++;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (; fastIndex &lt; s.<span class="hljs-built_in">size</span>(); fastIndex++) &#123;<br>            <span class="hljs-comment">// 去掉字符串中间部分的冗余空格</span><br>            <span class="hljs-keyword">if</span> (fastIndex - <span class="hljs-number">1</span> &gt; <span class="hljs-number">0</span><br>                    &amp;&amp; s[fastIndex - <span class="hljs-number">1</span>] == s[fastIndex]<br>                    &amp;&amp; s[fastIndex] == <span class="hljs-string">&#x27; &#x27;</span>) &#123;<br>                <span class="hljs-keyword">continue</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                s[slowIndex++] = s[fastIndex];<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">if</span> (slowIndex - <span class="hljs-number">1</span> &gt; <span class="hljs-number">0</span> &amp;&amp; s[slowIndex - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27; &#x27;</span>) &#123; <span class="hljs-comment">// 去掉字符串末尾的空格</span><br>            s.<span class="hljs-built_in">resize</span>(slowIndex - <span class="hljs-number">1</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            s.<span class="hljs-built_in">resize</span>(slowIndex); <span class="hljs-comment">// 重新设置字符串大小</span><br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function">string <span class="hljs-title">reverseWords</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        <span class="hljs-built_in">removeExtraSpaces</span>(s); <span class="hljs-comment">// 去掉冗余空格</span><br>        <span class="hljs-built_in">reverse</span>(s, <span class="hljs-number">0</span>, s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>); <span class="hljs-comment">// 将字符串全部反转</span><br>        <span class="hljs-type">int</span> start = <span class="hljs-number">0</span>; <span class="hljs-comment">// 反转的单词在字符串里起始位置</span><br>        <span class="hljs-type">int</span> end = <span class="hljs-number">0</span>; <span class="hljs-comment">// 反转的单词在字符串里终止位置</span><br>        <span class="hljs-type">bool</span> entry = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 标记枚举字符串的过程中是否已经进入了单词区间</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; s.<span class="hljs-built_in">size</span>(); i++) &#123; <span class="hljs-comment">// 开始反转单词</span><br>            <span class="hljs-keyword">if</span> (!entry) &#123;<br>                start = i; <span class="hljs-comment">// 确定单词起始位置</span><br>                entry = <span class="hljs-literal">true</span>; <span class="hljs-comment">// 进入单词区间</span><br>            &#125;<br>            <span class="hljs-comment">// 单词后面有空格的情况，空格就是分词符</span><br>            <span class="hljs-keyword">if</span> (entry &amp;&amp; s[i] == <span class="hljs-string">&#x27; &#x27;</span> &amp;&amp; s[i - <span class="hljs-number">1</span>] != <span class="hljs-string">&#x27; &#x27;</span>) &#123;<br>                end = i - <span class="hljs-number">1</span>; <span class="hljs-comment">// 确定单词终止位置</span><br>                entry = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 结束单词区间</span><br>                <span class="hljs-built_in">reverse</span>(s, start, end);<br>            &#125;<br>            <span class="hljs-comment">// 最后一个结尾单词之后没有空格的情况</span><br>            <span class="hljs-keyword">if</span> (entry &amp;&amp; (i == (s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>)) &amp;&amp; s[i] != <span class="hljs-string">&#x27; &#x27;</span> ) &#123;<br>                end = i;<span class="hljs-comment">// 确定单词终止位置</span><br>                entry = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 结束单词区间</span><br>                <span class="hljs-built_in">reverse</span>(s, start, end);<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> s;<br>    &#125;<br>    <br>    <span class="hljs-comment">// 当然这里的主函数reverseWords写的有一些冗余的，可以精简一些，精简之后的主函数为：</span><br>    <span class="hljs-comment">/* 主函数简单写法</span><br><span class="hljs-comment">    string reverseWords(string s) &#123;</span><br><span class="hljs-comment">        removeExtraSpaces(s);</span><br><span class="hljs-comment">        reverse(s, 0, s.size() - 1);</span><br><span class="hljs-comment">        for(int i = 0; i &lt; s.size(); i++) &#123;</span><br><span class="hljs-comment">            int j = i;</span><br><span class="hljs-comment">            // 查找单词间的空格，翻转单词</span><br><span class="hljs-comment">            while(j &lt; s.size() &amp;&amp; s[j] != &#x27; &#x27;) j++;</span><br><span class="hljs-comment">            reverse(s, i, j - 1);</span><br><span class="hljs-comment">            i = j;</span><br><span class="hljs-comment">        &#125;</span><br><span class="hljs-comment">        return s;</span><br><span class="hljs-comment">    &#125;</span><br><span class="hljs-comment">    */</span><br>&#125;;<br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="剑指-Offer-58-II-左旋转字符串"><a href="#剑指-Offer-58-II-左旋转字符串" class="headerlink" title="剑指 Offer 58 - II. 左旋转字符串"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/">剑指 Offer 58 - II. 左旋转字符串</a></h1><p>字符串<strong>前面的若干个字符</strong>转移到<strong>字符串的尾部</strong></p>
+<ul>
+<li>字符串分成2组，前面k个一组，剩下的又一组</li>
+<li>交换2个</li>
+</ul>
+<p>快慢指针，快指针先找到k=2、k=6的，赋值，第二轮for再赋值前面的给slow</p>
+<h2 id="java-substring方法"><a href="#java-substring方法" class="headerlink" title="java substring方法"></a>java substring方法</h2><ul>
+<li>substring(n):<ul>
+<li>从n到后面的全部字符</li>
+</ul>
+</li>
+<li>substring(0,n):<ul>
+<li>从0开始到第n个(不包括)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">reverseLeftWords</span><span class="hljs-params">(String s, <span class="hljs-type">int</span> n)</span> &#123;<br>        String res;<br>        res=s.substring(n)+s.substring(<span class="hljs-number">0</span>,n);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="cpp-substr方法"><a href="#cpp-substr方法" class="headerlink" title="cpp substr方法"></a>cpp substr方法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">reverseLeftWords</span><span class="hljs-params">(string s, <span class="hljs-type">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> s.<span class="hljs-built_in">substr</span>(n)+s.<span class="hljs-built_in">substr</span>(<span class="hljs-number">0</span>,n);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="局部反转-整体反转"><a href="#局部反转-整体反转" class="headerlink" title="局部反转+整体反转"></a>局部反转+整体反转</h2><p>abcd 2 cdab</p>
+<p>badc cdab</p>
+<ol>
+<li>反转区间为前n的子串</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">begin</span>() + n);<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>反转区间为n到末尾的子串</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>() + n, s.<span class="hljs-built_in">end</span>());<br></code></pre></td></tr></table></figure>
+
+<ol>
+<li>反转整个字符串</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">reverse</span>(s.<span class="hljs-built_in">begin</span>(), s.<span class="hljs-built_in">end</span>());<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="28-实现-strStr"><a href="#28-实现-strStr" class="headerlink" title="28. 实现 strStr()"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">28. 实现 strStr()</a></h1><p>在 <code>haystack</code> 字符串中找出 <code>needle</code> 字符串出现的第一个位置</p>
+<p>不存在，则返回 <code>-1</code></p>
+<p><code>needle</code> 是空字符串时我们应当返回 0</p>
+<ul>
+<li><p>if(needle=’ ‘)</p>
+<p>​      return 0;</p>
+</li>
+</ul>
+<h2 id="java-for-while"><a href="#java-for-while" class="headerlink" title="java for+while"></a>java for+while</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">strStr</span><span class="hljs-params">(String haystack, String needle)</span> &#123;<br><br>    <span class="hljs-type">int</span> <span class="hljs-variable">length</span> <span class="hljs-operator">=</span> needle.length();<br><br>    <span class="hljs-keyword">if</span> (length == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (length &gt; haystack.length()) <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br><br>    <span class="hljs-type">char</span>[] chars = needle.toCharArray();<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>, j = haystack.length() - length; i &lt;= j; i++) &#123;<br><br>        <span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (k &lt; length &amp;&amp; haystack.charAt(k + i) == chars[k]) &#123;<br>            k++;<br>        &#125;<br><br>        <span class="hljs-keyword">if</span> (k == length) <span class="hljs-keyword">return</span> i;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>提前处理的情况：<ul>
+<li>=0 / needle&gt;haystack</li>
+<li>for遍历hay，while当匹配时就下一个</li>
+</ul>
+</li>
+</ul>
+<h2 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h2><p><strong>当出现字符串不匹配时，可以记录一部分之前==已经匹配的文本内容==，==利用这些信息避免从头再去做匹配==。</strong></p>
+<h3 id="什么是KMP"><a href="#什么是KMP" class="headerlink" title="什么是KMP"></a>什么是KMP</h3><p>三位学者发明的：Knuth，Morris和Pratt</p>
+<h3 id="KMP有什么用"><a href="#KMP有什么用" class="headerlink" title="KMP有什么用"></a>KMP有什么用</h3><p>==字符串匹配==</p>
+<p><strong>当出现字符串不匹配时，可以知道一部分之前==已经匹配的文本内容==，可以==利用这些信息避免从头再去做匹配==了</strong></p>
+<h3 id="KMP的重点"><a href="#KMP的重点" class="headerlink" title="KMP的重点"></a>KMP的重点</h3><p>如何记录已经匹配的文本内容【next数组】</p>
+<h3 id="next数组里的数字表示的是什么，为什么这么表示？"><a href="#next数组里的数字表示的是什么，为什么这么表示？" class="headerlink" title="next数组里的数字表示的是什么，为什么这么表示？"></a><strong>next数组里的数字表示的是什么，为什么这么表示？</strong></h3><h3 id="什么是前缀表"><a href="#什么是前缀表" class="headerlink" title="什么是前缀表"></a>什么是前缀表</h3><p>next数组就是一个前缀表（prefix table）</p>
+<p><strong>用来回退</strong></p>
+<p>记录了模式串与主串(文本串)不匹配的时候，模式串应该从哪里开始重新匹配。</p>
+<h3 id="前缀表是如何记录的呢？"><a href="#前缀表是如何记录的呢？" class="headerlink" title="前缀表是如何记录的呢？"></a><strong>前缀表是如何记录的呢？</strong></h3><p>缀表的任务是当前位置匹配失败</p>
+<p>找到之前已经匹配上的位置</p>
+<p>再重新匹配</p>
+<p>在某个字符失配时</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">leetcode刷题记录</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/22/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8BmAP/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">目标检测mAP</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/22/%E7%9F%A9%E6%B1%A0%E4%BA%91%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">矩池云使用</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'http://example.com/2022/04/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/';
+          this.page.identifier = '/2022/04/22/%E5%AD%97%E7%AC%A6%E4%B8%B2/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'fluid' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

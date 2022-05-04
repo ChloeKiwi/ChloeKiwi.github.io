@@ -1,0 +1,628 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <link rel="icon" href="/img/QQ%E5%9B%BE%E7%89%8720220422155445.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yang Qiya">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="栈与队列 先进后出，先进先出  C++ STL “Standard Template Library”的缩写 标准模板库 STL 是 C++ 标准库的一部分，不用单独安装 STL 就是借助模板把常用的数据结构及其算法都实现了一遍，并且做到了数据结构和算法的分离 vector 的底层为顺序表（数组），list 的底层为双向链表，deque 的底层为循环队列，set 的底层为红黑树，hash_set">
+<meta property="og:type" content="article">
+<meta property="og:title" content="栈与队列">
+<meta property="og:url" content="http://example.com/2022/05/04/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/index.html">
+<meta property="og:site_name" content="Qiya">
+<meta property="og:description" content="栈与队列 先进后出，先进先出  C++ STL “Standard Template Library”的缩写 标准模板库 STL 是 C++ 标准库的一部分，不用单独安装 STL 就是借助模板把常用的数据结构及其算法都实现了一遍，并且做到了数据结构和算法的分离 vector 的底层为顺序表（数组），list 的底层为双向链表，deque 的底层为循环队列，set 的底层为红黑树，hash_set">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20220220092835205.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20220225083657137.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20220225092552432.png">
+<meta property="article:published_time" content="2022-05-04T07:27:49.000Z">
+<meta property="article:modified_time" content="2022-05-04T01:51:54.682Z">
+<meta property="article:author" content="Yang Qiya">
+<meta property="article:tag" content="leetcode刷题记录">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20220220092835205.png">
+  
+  
+  <title>栈与队列 - Qiya</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Qiya&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="栈与队列">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-05-04 15:27" pubdate>
+        May 4, 2022 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.6k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      55 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">栈与队列</h1>
+            
+            <div class="markdown-body">
+              <h1 id="栈与队列"><a href="#栈与队列" class="headerlink" title="栈与队列"></a>栈与队列</h1><blockquote>
+<p>先进后出，先进先出</p>
+</blockquote>
+<h2 id="C-STL"><a href="#C-STL" class="headerlink" title="C++ STL"></a>C++ STL</h2><ul>
+<li>“Standard Template Library”的缩写</li>
+<li><strong>标准模板库</strong></li>
+<li>STL 是 C++ 标准库的一部分，不用单独安装</li>
+<li>STL 就是借助模板<strong>把常用的<a target="_blank" rel="noopener" href="http://data.biancheng.net/">数据结构</a>及其算法都实现了一遍</strong>，并且做到了<strong>数据结构和算法的分离</strong><ul>
+<li>vector 的底层为<strong>顺序表</strong>（数组），list 的底层为<strong>双向链表</strong>，deque 的底层为<strong>循环队列</strong>，set 的底层为红黑树，hash_set 的底层为<strong>哈希表</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="栈和队列和STL是什么关系-以下针对cpp"><a href="#栈和队列和STL是什么关系-以下针对cpp" class="headerlink" title="栈和队列和STL是什么关系(以下针对cpp)"></a>栈和队列和STL是什么关系(以下针对cpp)</h2><ul>
+<li>栈和队列是STL（C++标准库）里面的两个数据结构</li>
+</ul>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><ul>
+<li>不提供走访功能</li>
+<li>不提供迭代器（iterator）</li>
+<li>提供push 和 pop 等等接口</li>
+<li><strong>我们可以控制使用哪种容器来实现栈的功能</strong></li>
+</ul>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220220092835205.png" srcset="/img/loading.gif" lazyload alt="image-20220220092835205"></p>
+<h3 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h3><ul>
+<li>本质是循环队列/双向队列</li>
+<li>封住一段，开通另一端就可以实现栈</li>
+</ul>
+<h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><figure class="highlight cpp"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs cpp">std::stack&lt;<span class="hljs-type">int</span>, std::vector&lt;<span class="hljs-type">int</span>&gt; &gt; third;  <span class="hljs-comment">// 使用vector为底层容器的栈</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><ul>
+<li>先进先出</li>
+<li>无遍历</li>
+<li>不迭代</li>
+</ul>
+<h3 id="list-1"><a href="#list-1" class="headerlink" title="list"></a>list</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::queue&lt;<span class="hljs-type">int</span>, std::list&lt;<span class="hljs-type">int</span>&gt;&gt; third; <span class="hljs-comment">// 定义以list为底层容器的队列</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="JAVA中的栈与队列"><a href="#JAVA中的栈与队列" class="headerlink" title="JAVA中的栈与队列"></a>JAVA中的栈与队列</h1><p>Java中实现<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97&spm=1001.2101.3001.7020">栈和队列</a>操作都可以通过使用<strong>LinkedList类</strong>实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.Stack;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestStack</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        Stack&lt;String&gt; stack=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();    <br><span class="hljs-comment">//进栈</span><br>    stack.push(<span class="hljs-string">&quot;happy&quot;</span>);<br>    stack.push(<span class="hljs-string">&quot;share&quot;</span>);<br>    stack.push(<span class="hljs-string">&quot;insist&quot;</span>);<br>    stack.push(<span class="hljs-string">&quot;amazing&quot;</span>);<br>    <span class="hljs-comment">//出栈</span><br>    System.out.println(stack.pop()); <span class="hljs-comment">//amazing</span><br><br>    <span class="hljs-comment">//观察栈顶元素</span><br>    System.out.println(stack.peek());<span class="hljs-comment">//insist</span><br><br>    <span class="hljs-comment">//遍历栈</span><br>    <span class="hljs-keyword">while</span>(!stack.isEmpty())<br>    &#123;<br>        System.out.print(stack.pop()+<span class="hljs-string">&quot;&lt;-&quot;</span>); <span class="hljs-comment">//insist&lt;-share&lt;-happy&lt;-</span><br>    &#125;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h1 id="232-用栈实现队列"><a href="#232-用栈实现队列" class="headerlink" title="232.用栈实现队列"></a>232.用栈实现队列</h1><p>使用<strong>两个栈</strong>实现<strong>先入先出队列</strong></p>
+<p>需要两个栈<strong>一个输入栈，一个输出栈</strong></p>
+<ul>
+<li>push：输入栈正常push</li>
+<li>pop：out的栈顶元素<ul>
+<li>输出栈为空：从输入栈导入数据到输出栈（获取输入栈的栈顶数据.top()）</li>
+<li>out.push(in.top())  先取走上面的</li>
+<li>in.pop() 再弹出上面的（换成下一个）</li>
+<li>不为空：正常pop<ul>
+<li>如果是int pop()：返回要出去的值，pop赋给result后pop，返回result</li>
+<li>如果是void pop()：直接.pop</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>peek：“看”out的栈顶元素(OUT可能有、没有元素)<ul>
+<li>pop弹出</li>
+<li>要还原回去</li>
+</ul>
+</li>
+<li>empty：<ul>
+<li>in和out都不为空</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyQueue</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    stack&lt;<span class="hljs-type">int</span>&gt; stIn;<br>    stack&lt;<span class="hljs-type">int</span>&gt; StOut;<br>    <span class="hljs-built_in">MyQueue</span>() &#123;<br><br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>        stIn.<span class="hljs-built_in">push</span>(x);<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// 排好out栈</span><br>        <span class="hljs-keyword">if</span>(StOut.<span class="hljs-built_in">empty</span>())&#123;<span class="hljs-comment">//out为空</span><br>            <span class="hljs-comment">// 先把in中的所有元素取出</span><br>            <span class="hljs-keyword">while</span>(!stIn.<span class="hljs-built_in">empty</span>())&#123;<span class="hljs-comment">//in不为空就一直取</span><br>                <span class="hljs-type">int</span> out=stIn.<span class="hljs-built_in">top</span>();<span class="hljs-comment">//取栈顶元素</span><br>                stIn.<span class="hljs-built_in">pop</span>();<span class="hljs-comment">//弹出in的栈顶元素</span><br>                StOut.<span class="hljs-built_in">push</span>(out);<span class="hljs-comment">//弹出栈接收in的栈顶元素         </span><br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 再出栈(out是否为空都要走这)</span><br>            <span class="hljs-comment">// int res=StOut.pop();//out栈出栈，赋给结果</span><br>            <span class="hljs-type">int</span> res=StOut.<span class="hljs-built_in">top</span>();<span class="hljs-comment">//取栈顶元素</span><br>            StOut.<span class="hljs-built_in">pop</span>();<span class="hljs-comment">//栈顶取出后并弹出</span><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// out栈可能有元素，可能没有元素</span><br>        <span class="hljs-type">int</span> res=<span class="hljs-keyword">this</span>-&gt;<span class="hljs-built_in">pop</span>();<span class="hljs-comment">//让out栈有元素且弹出</span><br>        StOut.<span class="hljs-built_in">push</span>(res);<span class="hljs-comment">//还原</span><br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">// if(!stIn.empty()&amp;&amp;!StOut.empty())</span><br>        <span class="hljs-comment">//     return true;</span><br>        <span class="hljs-comment">// else</span><br>        <span class="hljs-comment">//     return false;</span><br><br>        <span class="hljs-comment">//都为空就是true，上面反了</span><br>        <span class="hljs-keyword">return</span> stIn.<span class="hljs-built_in">empty</span>() &amp;&amp; StOut.<span class="hljs-built_in">empty</span>();<br><br>    &#125;<br>&#125;;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your MyQueue object will be instantiated and called as such:</span><br><span class="hljs-comment"> * MyQueue* obj = new MyQueue();</span><br><span class="hljs-comment"> * obj-&gt;push(x);</span><br><span class="hljs-comment"> * int param_2 = obj-&gt;pop();</span><br><span class="hljs-comment"> * int param_3 = obj-&gt;peek();</span><br><span class="hljs-comment"> * bool param_4 = obj-&gt;empty();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">MyQueue</span> &#123;<br>    Stack&lt;Integer&gt;stin;<br>    Stack&lt;Integer&gt;stout;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">MyQueue</span><span class="hljs-params">()</span> &#123;<br>        stin=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<span class="hljs-comment">//stin初始化</span><br>        stout=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;&gt;();<span class="hljs-comment">//stout初始化</span><br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>        stin.push(x);<span class="hljs-comment">//输入栈入栈即可</span><br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">pop</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">// 先让pop栈有元素</span><br>        dumpstackin();<br>        <span class="hljs-keyword">return</span> stout.pop();<span class="hljs-comment">//返回弹出的那个元素</span><br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">peek</span><span class="hljs-params">()</span> &#123;<br>        dumpstackin();<br>        <span class="hljs-type">int</span> res=stout.pop();<span class="hljs-comment">//先弹出并赋值</span><br>        stout.push(res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">empty</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> stin.isEmpty()&amp;&amp;stout.isEmpty();<span class="hljs-comment">//栈判断empty：isEmpty</span><br>    &#125;<br><br>    <span class="hljs-comment">// in转移到out函数</span><br><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dumpstackin</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-keyword">if</span>(!stout.isEmpty())&#123;<span class="hljs-comment">//等空的时候再转移</span><br>            <span class="hljs-keyword">return</span>;<span class="hljs-comment">//什么也不做</span><br>        &#125;<br>        <span class="hljs-comment">// 否则</span><br>        <span class="hljs-keyword">while</span>(!stin.isEmpty())&#123;<span class="hljs-comment">//in还不是空</span><br>            stout.push(stin.pop());<span class="hljs-comment">//out栈入栈in出栈的元素</span><br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your MyQueue object will be instantiated and called as such:</span><br><span class="hljs-comment"> * MyQueue obj = new MyQueue();</span><br><span class="hljs-comment"> * obj.push(x);</span><br><span class="hljs-comment"> * int param_2 = obj.pop();</span><br><span class="hljs-comment"> * int param_3 = obj.peek();</span><br><span class="hljs-comment"> * boolean param_4 = obj.empty();</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="225-用队列实现栈"><a href="#225-用队列实现栈" class="headerlink" title="225. 用队列实现栈"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-stack-using-queues/">225. 用队列实现栈</a></h1><h2 id="两个队列"><a href="#两个队列" class="headerlink" title="两个队列"></a>两个队列</h2><p><strong>两个队列</strong>实现一个后入先出（LIFO）的栈</p>
+<p>需要：先进后出的栈</p>
+<p>现有：先进先出的队列</p>
+<ul>
+<li>另一个队列完全用来<strong>备份</strong></li>
+<li>把que1最后面的元素以外的元素备份到que2，弹出最后面</li>
+<li>再还原</li>
+</ul>
+<p>整个题目目的：</p>
+<ul>
+<li>进去12345</li>
+<li>出来54321</li>
+<li>sque1只剩下5了，只能pop出5了</li>
+</ul>
+<h3 id="push"><a href="#push" class="headerlink" title="push"></a>push</h3><ul>
+<li>入栈，即入队</li>
+<li>元素放进a中</li>
+<li></li>
+<li>1不为空时，2添加1的</li>
+</ul>
+<h2 id="一个队列"><a href="#一个队列" class="headerlink" title="一个队列"></a>一个队列</h2><ul>
+<li><strong>将队列头部的元素（除了最后一个元素外） 重新添加到队列尾部</strong></li>
+<li>12345</li>
+<li>​         51234？？？</li>
+</ul>
+<h1 id="20-有效的括号"><a href="#20-有效的括号" class="headerlink" title="20. 有效的括号"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/valid-parentheses/">20. 有效的括号</a></h1><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">s</span> = <span class="hljs-string">&quot;()&quot;</span><br>输出：<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">s</span> = <span class="hljs-string">&quot;()[]&#123;&#125;&quot;</span><br>输出：<span class="hljs-literal">true</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nix">输入：<span class="hljs-attr">s</span> = <span class="hljs-string">&quot;(]&quot;</span><br>输出：<span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>遍历字符串，依次入栈，每个进来之前与栈顶元素判断是否匹配，匹配两个都出栈，</li>
+<li>左括号都先入栈</li>
+<li>出现右括号时要判断是否匹配deque.peek()!=ch</li>
+<li>不匹配就直接false</li>
+<li>如果什么都没有也是false</li>
+<li>如果右括号和栈顶元素匹配就弹出</li>
+<li>最后如果有元素还在栈中就不满足，没有元素了就满足</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isValid</span><span class="hljs-params">(String s)</span> &#123;<br>        <span class="hljs-comment">// Deque双向队列,字符型</span><br>        Deque&lt;Character&gt;deque=<span class="hljs-keyword">new</span> <span class="hljs-title class_">LinkedList</span>&lt;&gt;();<br>        <span class="hljs-type">char</span> ch;<br>        <span class="hljs-comment">// 遍历字符串s</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;s.length();i++)&#123;<br>            ch=s.charAt(i);<span class="hljs-comment">//把字符串拆分成单独的char</span><br>            <span class="hljs-comment">// 碰到左括号，就把相应的右括号入栈</span><br>            <span class="hljs-keyword">if</span>(ch==<span class="hljs-string">&#x27;(&#x27;</span>)<br>                deque.push(<span class="hljs-string">&#x27;)&#x27;</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ch==<span class="hljs-string">&#x27;[&#x27;</span>)<br>                deque.push(<span class="hljs-string">&#x27;]&#x27;</span>);<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ch==<span class="hljs-string">&#x27;&#123;&#x27;</span>)<br>                deque.push(<span class="hljs-string">&#x27;&#125;&#x27;</span>);<br>            <span class="hljs-comment">// 如果是右括号,没有左括号匹配或者栈顶不是需要的</span><br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(deque.isEmpty()||deque.peek()!=ch)<br>                <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>            <span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">//如果是右括号且匹配</span><br>                deque.pop();<span class="hljs-comment">//弹出栈顶元素</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> deque.isEmpty();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="1047-删除字符串中的所有相邻重复项"><a href="#1047-删除字符串中的所有相邻重复项" class="headerlink" title="1047. 删除字符串中的所有相邻重复项"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/remove-all-adjacent-duplicates-in-string/">1047. 删除字符串中的所有相邻重复项</a></h1><p>两个相邻且相同的字母，并删除它们</p>
+<p>反复执行重复项删除操作，直到无法继续删除</p>
+<ul>
+<li><p>遍历输入依次入栈</p>
+</li>
+<li><p>每来一个，判断与栈顶是否相同</p>
+<ul>
+<li>相同就弹出栈顶（删除）</li>
+<li>不同就入栈</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">removeDuplicates</span><span class="hljs-params">(String s)</span> &#123;<br>        Stack&lt;Character&gt;st=<span class="hljs-keyword">new</span> <span class="hljs-title class_">Stack</span>&lt;Character&gt;();<span class="hljs-comment">//新栈</span><br>        <span class="hljs-comment">// 出入栈操作</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c:s.toCharArray())&#123;<span class="hljs-comment">//遍历s字符串，每个是c</span><br>            <span class="hljs-keyword">if</span>(st.isEmpty()||st.peek()!=c)<span class="hljs-comment">//</span><br>                st.push(c);<span class="hljs-comment">//与栈顶不相等就入栈</span><br>            <span class="hljs-keyword">else</span>&#123;<br>                st.pop();<span class="hljs-comment">//弹出栈顶</span><br>            &#125;<br>        &#125;<br>        String res=<span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-keyword">while</span>(!st.isEmpty())&#123;<span class="hljs-comment">//只要不为空</span><br>            res=st.pop()+res;<span class="hljs-comment">//最后弹出的放前面，字符串拼接</span><br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function">string <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(string s)</span> </span>&#123;<br>        stack&lt;<span class="hljs-type">char</span>&gt;st;<span class="hljs-comment">//新栈</span><br>        <span class="hljs-comment">// 出入栈操作</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">char</span> c:s)&#123;<span class="hljs-comment">//遍历s字符串，每个是c</span><br>            <span class="hljs-keyword">if</span>(st.<span class="hljs-built_in">empty</span>() ||c!=st.<span class="hljs-built_in">top</span>())<span class="hljs-comment">//</span><br>                st.<span class="hljs-built_in">push</span>(c);<span class="hljs-comment">//与栈顶不相等就入栈</span><br>            <span class="hljs-keyword">else</span>&#123;<br>                st.<span class="hljs-built_in">pop</span>();<span class="hljs-comment">//弹出栈顶</span><br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 栈元素转移到string</span><br>        string res = <span class="hljs-string">&quot;&quot;</span>;<br>        <span class="hljs-keyword">while</span>(!st.<span class="hljs-built_in">empty</span>())&#123;<span class="hljs-comment">//只要不为空</span><br>            <span class="hljs-comment">// res += st.pop(); //弹出并赋值</span><br>            res+=st.<span class="hljs-built_in">top</span>();<br>            st.();<br>        &#125;<br>        <span class="hljs-comment">// 元素逆转</span><br>        <span class="hljs-built_in">reverse</span>(res.<span class="hljs-built_in">begin</span>(), res.<span class="hljs-built_in">end</span>());<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h1 id="150-逆波兰表达式求值"><a href="#150-逆波兰表达式求值" class="headerlink" title="150. 逆波兰表达式求值"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/">150. 逆波兰表达式求值</a></h1></li>
+</ul>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs maxima">输入：<span class="hljs-built_in">tokens</span> = [<span class="hljs-string">&quot;2&quot;</span>,<span class="hljs-string">&quot;1&quot;</span>,<span class="hljs-string">&quot;+&quot;</span>,<span class="hljs-string">&quot;3&quot;</span>,<span class="hljs-string">&quot;*&quot;</span>]<br>输出：<span class="hljs-number">9</span><br>解释：该算式转化为常见的中缀算术表达式为：((<span class="hljs-number">2</span> + <span class="hljs-number">1</span>) * <span class="hljs-number">3</span>) = <span class="hljs-number">9</span><br></code></pre></td></tr></table></figure>
+
+<p>遇到数字：进栈—&gt;stack<int></p>
+<p>遇到符号，把栈顶2个元素取出来做运算</p>
+<ul>
+<li>int a=st.pop();</li>
+<li>int b=st.pop();</li>
+<li>if()</li>
+<li>int res=a_b; 做运算，符号不确定</li>
+<li>st.push(res); 结果入栈</li>
+</ul>
+<p>循环以上，</p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220225083657137.png" srcset="/img/loading.gif" lazyload alt="image-20220225083657137"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">evalRPN</span><span class="hljs-params">(vector&lt;string&gt;&amp; tokens)</span> </span>&#123; <span class="hljs-comment">//一个数组，有数字有字符串</span><br>        stack&lt;<span class="hljs-type">int</span>&gt;st;<span class="hljs-comment">//声明</span><br>        <span class="hljs-comment">// 遍历tokens</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;tokens.<span class="hljs-built_in">size</span>();i++)&#123;<br>            <span class="hljs-keyword">if</span>(tokens[i]==<span class="hljs-string">&quot;+&quot;</span>||tokens[i]==<span class="hljs-string">&quot;-&quot;</span>||tokens[i]==<span class="hljs-string">&quot;*&quot;</span>||tokens[i]==<span class="hljs-string">&quot;/&quot;</span>)&#123;<span class="hljs-comment">//如果遇到运算符，弹出栈顶</span><br>                <span class="hljs-type">int</span> a=st.<span class="hljs-built_in">top</span>();<br>                st.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-type">int</span> b=st.<span class="hljs-built_in">top</span>();<br>                st.<span class="hljs-built_in">pop</span>();<br>                <span class="hljs-type">int</span> res=<span class="hljs-number">0</span>;<br>                <span class="hljs-keyword">if</span>(tokens[i]==<span class="hljs-string">&quot;+&quot;</span>)&#123;<span class="hljs-comment">//如果是加号  </span><br>                    res=a+b;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tokens[i]==<span class="hljs-string">&quot;-&quot;</span>)&#123;<br>                    res=a-b;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tokens[i]==<span class="hljs-string">&quot;*&quot;</span>)&#123;<br>                    res=a*b;<br>                &#125;<br>                <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(tokens[i]==<span class="hljs-string">&quot;/&quot;</span>)&#123;<br>                    res=a/b;<br>                &#125;<br>                st.<span class="hljs-built_in">push</span>(res);<span class="hljs-comment">//结果进栈</span><br>            &#125;<br>            <span class="hljs-keyword">else</span>&#123;<span class="hljs-comment">//数字，进栈</span><br>                st.<span class="hljs-built_in">push</span>(<span class="hljs-built_in">stoi</span>(tokens[i]));<br>            &#125;<br>        &#125;<br>        <span class="hljs-comment">// 取栈中最后一个元素并返回</span><br>        <span class="hljs-type">int</span> last=st.<span class="hljs-built_in">top</span>();<br>        <span class="hljs-keyword">return</span> last;<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><strong>后缀表达式对计算机来说是非常友好的</strong></p>
+<h2 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239. 滑动窗口最大值"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sliding-window-maximum/">239. 滑动窗口最大值</a></h2><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20220225092552432.png" srcset="/img/loading.gif" lazyload alt="image-20220225092552432"></p>
+<h1 id="347-前-K-个高频元素"><a href="#347-前-K-个高频元素" class="headerlink" title="347. 前 K 个高频元素"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/top-k-frequent-elements/">347. 前 K 个高频元素</a></h1><p>返回其中<strong>出现频率</strong>前 <code>k</code> 高的元素</p>
+<p>hash</p>
+<ul>
+<li>统计元素出现频率：每个数字和0减存在hash[nums[i]-0]++</li>
+<li>遍历hash数组，找出最大的k个<ul>
+<li>对频率排序</li>
+<li>找出前K个高频元素</li>
+</ul>
+</li>
+</ul>
+<p>while(k){</p>
+<p>for()</p>
+<p>}</p>
+<h2 id="排序：优先级队列"><a href="#排序：优先级队列" class="headerlink" title="排序：优先级队列"></a>排序：优先级队列</h2><ul>
+<li>从队头取元素</li>
+<li>从队尾添加元素</li>
+<li>看起来就是一个队列</li>
+<li><strong>内部元素是自动依照元素的权值排列</strong>（有序排列）</li>
+</ul>
+<blockquote>
+<p>大家经常说的大顶堆（堆头是最大元素），小顶堆（堆头是最小元素），如果懒得自己实现的话，就直接用priority_queue（优先级队列）就可以了。</p>
+<p>底层实现都是一样的，从小到大排就是小顶堆，从大到小排就是大顶堆。</p>
+<p><strong>小顶堆每次将最小的元素弹出</strong></p>
+<p><strong>每次移动更新大顶堆的时候，每次弹出都把最大的元素弹出去了</strong></p>
+</blockquote>
+<h2 id="排序：快排"><a href="#排序：快排" class="headerlink" title="排序：快排"></a>排序：快排</h2><p>使用快排要<strong>将map转换为vector的结构</strong>，然后<strong>对整个数组进行排序</strong></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/">leetcode刷题记录</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/04/%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数之和问题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/04/%E7%BF%BB%E8%BD%AC%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
